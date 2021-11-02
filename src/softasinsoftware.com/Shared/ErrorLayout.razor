@@ -1,0 +1,41 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+
+    <header>
+        <link href="css/app.css" rel="stylesheet" />
+        <h1>Soft as in Software</h1>
+    </header>
+
+    <NavMenu/>
+
+    <article class="content px-4">
+        @Body
+    </article>
+
+    <footer>
+        @TrademarkMessage
+    </footer>
+</div>
+
+@code {
+    public string TrademarkMessage { get; set; } = "©" + @DateTime.Now.Year + " Soft as in Software. All rights reserved.";
+}
+
+<!--
+<div class="page">
+    <div class="sidebar">
+    </div>
+
+    <main>
+        <div class="top-row px-4 auth">
+            <LoginDisplay />
+            <a href="https://blog.softasinsoftware.com" target="_blank">Blog</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+-->

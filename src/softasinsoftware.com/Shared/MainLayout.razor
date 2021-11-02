@@ -1,0 +1,17 @@
+﻿@inherits LayoutComponentBase
+
+<header>
+    <NavMenu/>
+</header>
+
+@Body
+
+<footer>
+    <div class="p-3 mb-2 bg-primary text-white text-center">
+        @TrademarkMessage
+    </div>
+</footer>
+
+@code {
+    public string TrademarkMessage { get; set; } = "©" + @DateTime.Now.Year + " Soft as in Software. All rights reserved.";
+}
