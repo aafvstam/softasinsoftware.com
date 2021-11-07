@@ -1,17 +1,22 @@
 ﻿@inherits LayoutComponentBase
 
-<header>
-    <NavMenu/>
-</header>
+<div class="main">
+	<header>
+	</header>
+	
+	<NavMenu />
 
-@Body
+	<div class="content">
+		@Body
+	</div>
 
-<footer>
-    <div class="p-3 mb-2 bg-primary text-white text-center">
-        @TrademarkMessage
-    </div>
-</footer>
+	<footer>
+		<div class="p-3 mb-2 bg-primary text-white text-center">
+			@TrademarkMessage
+		</div>
+	</footer>
+</div>
 
 @code {
-    public string TrademarkMessage { get; set; } = "©" + @DateTime.Now.Year + " Soft as in Software. All rights reserved.";
+	public string TrademarkMessage { get; set; } = "©" + @DateTime.Now.Year + " Soft as in Software. All rights reserved.";
 }
