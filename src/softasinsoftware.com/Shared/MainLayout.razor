@@ -1,19 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="main">
-	<header>
+	<header class="d-flex align-items-center justify-content-center">
+		<img src="./images/logotext.png" />
 	</header>
-	
+
 	<NavMenu />
 
 	<div class="content">
 		@Body
 	</div>
 
-	<footer>
-		<div class="p-3 mb-2 bg-primary text-white text-center">
-			@TrademarkMessage
-		</div>
+	<footer class="d-flex align-items-center justify-content-center">
+		@TrademarkMessage
 	</footer>
 </div>
 
