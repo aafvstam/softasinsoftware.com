@@ -26,13 +26,14 @@ nav .navbar-nav li a {
 }
 
 .content {
+    padding-top: 25px;
 }
 
 footer {
-    /*position: absolute;*/
     font-weight: bolder;
     font-size:small ;
-    position: fixed; /* Sticky */
+    position: absolute;
+    /*position: fixed;*/ /* Sticky */
     left: 0;
     bottom: 0;
     width: 100vw;
