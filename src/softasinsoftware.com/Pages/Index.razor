@@ -1,7 +1,58 @@
 ﻿@page "/"
 
-<h2>Hello, Soft As In Software!</h2>
+<h1 class="col-md-12 text-center">Previous Recorded Soft as in Software Videos</h1>
 
-Welcome to my new landingpage for Soft As In Software ...
+<p>Here you can find previous recorded videos from the Soft as in Software YouTube Channel. There videos are recordings of Live Coding sessions on the subject of .NET Core, Blazor and/or Office Development.</p>
 
-<SurveyPrompt Title="How is this working for you, so far?" />
+<div class="row">
+	<div class="col-md-12 text-center mb-3">
+		<a href="@MoreShowsUrl" class="btn btn-primary" target="_blank">See More Episodes</a>
+	</div>
+</div>
+
+
+<div class="row justify-content-center mb-3">
+	@foreach (var video in VideoList)
+	{
+		@*<partial name="_YouTubeShow" model="video" />*@
+
+		<div class="card shadow youtube-show m-3">
+			<a href="@video.Url" target="_blank" title="Watch this episode">
+				<div>
+					<img src="@video.ThumbnailUrl" class="card-img-top" alt="@video.Title" asp-append-version="true">
+				</div>
+			</a>
+
+			@*
+				@if (video.IsNew)
+				{
+				<span class="badge badge-pill p-2 pr-3 pl-3 badge-success top-right">New</span>
+				}
+				else if (video.IsInFuture)
+				{
+				<span class="badge badge-pill p-2 pr-3 pl-3 badge-info top-right">Upcoming</span>
+				}
+			*@
+			<div class="card-body">
+
+				@*                @if (!string.IsNullOrEmpty(video.Category))
+					{
+					<p><span class="badge badge-pill p-2 pr-3 pl-3 badge-primary">@video.Category</span></p>
+					}
+				*@
+				<h5 class="card-title">@video.Title</h5>
+
+				@*                @if (video.HasLinks)
+					{
+					<a class="btn btn-outline-secondary btn-sm float-right" href="@video.CommunityLinksUrl" target="_blank">Community Links</a>
+					}
+				*@
+			</div>
+
+			<div class="card-footer text-muted text-center">
+				@video.ShowDate
+			</div>
+		</div>
+	}
+</div>
+
