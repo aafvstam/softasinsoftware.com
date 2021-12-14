@@ -1,7 +1,13 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
-html, body {
+html {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #EEEEEE;
+    /*margin-bottom: 60px;*/
 }
 
 .main {
@@ -31,15 +37,17 @@ nav .navbar-nav li a {
 
 footer {
     font-weight: bolder;
-    font-size:small ;
-    position: absolute;
+    font-size: small;
+    /*position: absolute;*/
     /*position: fixed;*/ /* Sticky */
+    position: relative; /* Sticky */
     left: 0;
     bottom: 0;
     width: 100vw;
     height: 3rem; /* Footer height */
     /* background-color: #0054A6;  rgb(0, 84, 166) hsl(210, 100%, 33%) */
     background-color: #9EABCA; /* rgb(158, 171, 202) hsl(222, 29%, 71%) */
+    /*margin-top: auto;*/
 }
 
 a, .btn-link {
@@ -92,3 +100,60 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+.neumorphism {
+    margin: 10px 5px 10px;
+    box-shadow: -6px -6px 6px 0 rgba(255,255,255,1), 6px 6px 12px 0 rgba(0, 0, 0, .51);
+}
+
+@media (min-width: 576px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 992px) {
+    #maincards.card-columns {
+        column-count: 3;
+    }
+
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1200px) {
+    #maincards.card-columns {
+        column-count: 2;
+    }
+
+    .card-columns {
+        column-count: 4;
+    }
+}
+
+/*.card {
+    border: none;
+    break-inside: avoid;
+    width: 18rem;
+    min-height: 420px;
+}
+*/
+
+/*.card-footer {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    border: 1px solid blue;
+    top: calc(100% - 40px);
+}*/

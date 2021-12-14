@@ -1,0 +1,35 @@
+﻿@page "/"
+
+<h1 class="col-md-12 text-center">Previous Recorded Soft as in Software Videos</h1>
+
+<p>Here you can find previous recorded videos from the Soft as in Software YouTube Channel. There videos are recordings of Live Coding sessions on the subject of .NET Core, Blazor and/or Office Development.</p>
+
+@if (Videos == null || Videos.YouTubeVideos == null || Videos.YouTubeVideos.Count() == 0)
+{
+	<p><em>Loading ... </em></p>
+}
+else
+{
+	<div class="container">
+		<div class="row mt-3">
+			<div class="d-flex">
+				<div class="card-columns align-self-center">
+					@foreach (var video in Videos.YouTubeVideos)
+					{
+						<_YouTubeShow youTubeVideo=video />
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12 text-center mb-3">
+			<a href="@Videos.MoreVideosUrl" class="btn btn-primary" target="_blank">See More Episodes</a>
+		</div>
+	</div>
+}
+
+@code {
+
+}

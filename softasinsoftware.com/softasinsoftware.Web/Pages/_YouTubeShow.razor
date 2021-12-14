@@ -1,0 +1,20 @@
+﻿@using softasinsoftware.Shared.Models
+
+<div class="card neumorphism youtube-show m-3 align-self-center bg-transparent">
+	<a href="@youTubeVideo.Url" target="_blank" title="Watch this episode">
+		<div>
+			<img class="card-img-top" src="@youTubeVideo.ThumbnailUrl" alt="@youTubeVideo.Title" asp-append-version="true">
+		</div>
+	</a>
+
+	<div class="card-body">
+		<h5 class="card-title">@youTubeVideo.Title</h5>
+	</div>
+
+	<small class="card-footer">@youTubeVideo.ShowDate.Date.ToShortDateString()</small>
+</div>
+
+@code {
+	[Parameter]
+	public YouTubeVideo youTubeVideo { get; set; }
+}
