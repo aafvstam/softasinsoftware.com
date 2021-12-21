@@ -1,5 +1,5 @@
 ﻿@page "/counter"
-@inject IJSRuntime JS
+@*@inject IJSRuntime JS*@
 
 <h1>Counter</h1>
 
@@ -7,9 +7,10 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-<div class="text-danger text-sm-left">Call JS <code>Write Some Text to the Word Document</code> Function</div>
+@*<div class="text-danger text-sm-left">Call JS <code>Write Some Text to the Word Document</code> Function</div>
 
 <button class="btn btn-primary" @onclick="InsertParagraph">Hello World!</button>
+*@
 
 @code {
     private int currentCount = 0;
@@ -19,8 +20,8 @@
         currentCount+=2;
     }
 
-    private async Task InsertParagraph()
-    {
-        await JS.InvokeVoidAsync("insertParagraph");
-    }
+    //private async Task InsertParagraph()
+    //{
+    //    await JS.InvokeVoidAsync("insertParagraph");
+    //}
 }
