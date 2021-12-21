@@ -8,7 +8,7 @@ on:
   push:
     branches: [master]
   pull_request:
-    branches: [master]
+    branches: [master]  
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,9 +17,7 @@ env:
   AZURE_WEBAPP_NAME: SoftAsInSoftware
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
-  WORKING_DIRECTORY: softasinsoftware.Web
-  # AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '6.0.x' # set this to the dot net version to use
+  WORKING_DIRECTORY: ./softasinsoftware.com/softasinsoftware.Web
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
