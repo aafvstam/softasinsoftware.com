@@ -13,30 +13,25 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 env:
-  # AZURE_WEBAPP_NAME: my-app-name    # set this to your application's name
+
+  AZURE_WEBAPP_NAME: SoftAsInSoftware
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 6.0.x
+  WORKING_DIRECTORY: softasinsoftware.Web
   # AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '6.0.x' # set this to the dot net version to use
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: dotnet build and publish
-        run: |
-          dotnet restore
-          dotnet build SoftAsInSoftware.sln --configuration Release
-
-      # dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
+    build-and-deploy:
+        runs-on: windows-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Setup .NET Core
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+        - name: Restore
+          run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+        - name: Build
+          run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
