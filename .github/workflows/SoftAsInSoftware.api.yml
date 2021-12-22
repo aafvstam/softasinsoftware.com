@@ -1,0 +1,51 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+env:
+  AZURE_WEBAPI_NAME: SoftAsInSoftwareAPI
+  AZURE_WEBAPI_PACKAGE_PATH: softasinsoftware.API/publish
+  AZURE_WEBAPI_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPI_PUBLISH_PROFILE }}
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 6.0.x
+  WORKING_DIRECTORY: ./softasinsoftware.com/softasinsoftware.API
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+      - name: Restore
+        run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+      - name: Build Web
+        run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+      - name: Test
+        run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
+      - name: Publish
+        run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --self-contained true --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPI_PACKAGE_PATH }}"
+      - name: Deploy to Azure WebApp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPI_NAME }}
+          package: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
+          publish-profile: ${{ env.AZURE_WEBAPI_PUBLISH_PROFILE }}
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: webapp
+          path: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
