@@ -1,5 +1,4 @@
-using Google.Apis.Services;
-using Google.Apis.YouTube.v3;
+using Microsoft.Extensions.Caching.Memory;
 
 using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
@@ -16,6 +15,7 @@ builder.Services.AddCors(c =>
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
 });
 
+builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
 builder.Services.AddSingleton<IYouTubeVideosService, YouTubeVideosService>();
 
 var app = builder.Build();
@@ -30,11 +30,15 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(options => options.AllowAnyOrigin());
 
+
 app.MapGet("/youtubeplaylistvideos", async (IYouTubeVideosService youtubeservice) =>
 {
     try
     {
-        YouTubeVideoList videolist = await youtubeservice.GetYouTubePlayListVideosAsync();
+        bool disableCache = false;
+        string playListID = "YouTube:PlayListID";
+
+        YouTubeVideoList videolist = await youtubeservice.GetYouTubePlayListVideosAsync(playlistID: playListID, disableCache: disableCache);
         return Results.Ok(videolist);
     }
     catch (global::System.Exception)

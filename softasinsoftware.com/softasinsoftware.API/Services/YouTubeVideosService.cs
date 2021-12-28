@@ -1,6 +1,8 @@
 ﻿using Google.Apis.Services;
 using Google.Apis.YouTube.v3;
 
+using Microsoft.Extensions.Caching.Memory;
+
 using softasinsoftware.Shared.Models;
 
 using System.Globalization;
@@ -11,25 +13,65 @@ namespace softasinsoftware.API.Services
     public class YouTubeVideosService : IYouTubeVideosService
     {
         public IConfiguration Configuration { get; private set; }
+        public IMemoryCache MemoryCache { get; private set; }
 
-        public YouTubeVideosService(IConfiguration configuration)
+        private int NumberOfShows{ get; set; }
+        private string PlayList { get; set; } = string.Empty;
+        private string ApiKey { get; set; } = string.Empty;
+
+        public YouTubeVideosService(IConfiguration configuration, IMemoryCache cache)
         {
-           this.Configuration = configuration;
+            this.Configuration = configuration;
+            this.MemoryCache = cache;   
         }
 
-        public async Task<YouTubeVideoList> GetYouTubePlayListVideosAsync(int numberOfShows)
+        public async Task<YouTubeVideoList> GetYouTubePlayListVideosAsync(string playlistID, int numberOfShows, bool disablecache)
         {
-            string playlist = this.Configuration["YouTube:PlayListID"];
+            this.PlayList = this.Configuration[playlistID];
+            this.NumberOfShows = numberOfShows;
+            this.ApiKey = this.Configuration["YouTube:ApiKey"];
 
+            if (string.IsNullOrEmpty(this.ApiKey) ||
+                string.IsNullOrEmpty(this.PlayList))
+            {
+                // return mockdata ...
+            }
+
+            if (true /* authenticated */ && disablecache)
+            {
+                // return uncached data direct from source (YouTube)
+                return await GetVideosList(this.PlayList);
+            }
+
+            string cacheKey = this.PlayList;
+
+            var result = MemoryCache.Get<YouTubeVideoList>(cacheKey);
+
+            if (result == null)
+            {
+                result = await GetVideosList(this.PlayList);
+
+                MemoryCache.Set(cacheKey, result, new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromDays(1)
+                });
+            }
+
+            // lookup cache and collect
+            return result;
+        }
+
+        private async Task<YouTubeVideoList> GetVideosList(string playlist)
+        {
             var youtubeService = new YouTubeService(new BaseClientService.Initializer()
             {
-                ApiKey = this.Configuration["YouTube:APIKey"],
+                ApiKey = this.Configuration["YouTube:ApiKey"],
                 ApplicationName = "SoftAsInSoftware"                // _appSettings.YouTubeApplicationName,
             });
 
             var listRequest = youtubeService.PlaylistItems.List("snippet");
             listRequest.PlaylistId = playlist;
-            listRequest.MaxResults = numberOfShows;
+            listRequest.MaxResults = this.NumberOfShows;
 
             var playlistItems = await listRequest.ExecuteAsync();
 

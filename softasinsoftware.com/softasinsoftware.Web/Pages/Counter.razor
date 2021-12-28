@@ -1,27 +1,30 @@
 ﻿@page "/counter"
-@*@inject IJSRuntime JS*@
 
 <h1>Counter</h1>
 
-<p role="status">Current count: @currentCount</p>
+<p role="status">Current count: @CurrentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@*<div class="text-danger text-sm-left">Call JS <code>Write Some Text to the Word Document</code> Function</div>
+@*<div class="row">
+	<div class="col-md-4">
+		<h4>
+			Example for calling a JS function returning void:
+		</h4>
+	</div>
+	<div class="col-md-6">
+		<button type="button" class="btn btn-info" @onclick="ShowAlertWindow">Show Alert Window</button>
+	</div>
+</div>
 
-<button class="btn btn-primary" @onclick="InsertParagraph">Hello World!</button>
+<div class="row">
+	<div class="col-md-4">
+		<h4>
+			Call JS <code>Write Some Text to the Word Document</code> Function
+		</h4>
+	</div>
+	<div class="col-md-6">
+		<button type="button" class="btn btn-info" @onclick="InsertParagraph">Hello World!</button>
+	</div>
+</div>
 *@
-
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        currentCount+=2;
-    }
-
-    //private async Task InsertParagraph()
-    //{
-    //    await JS.InvokeVoidAsync("insertParagraph");
-    //}
-}

@@ -27,6 +27,7 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
 
@@ -38,19 +39,19 @@
             }
         });
 
-        window.insertParagraph = () => {
+        //window.insertParagraph = () => {
 
-            console.log("Hello JavaScript in Blazor!");
+        //    console.log("Hello JavaScript in Blazor!");
 
-            return Word.run((context) => {
+        //    return Word.run((context) => {
 
-                // insert a paragraph at the start of the document.
-                const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.start);
+        //        // insert a paragraph at the start of the document.
+        //        const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.start);
 
-                // sync the context to run the previous API call, and return.
-                return context.sync();
-            });
-        }
+        //        // sync the context to run the previous API call, and return.
+        //        return context.sync();
+        //    });
+        //}
     </script>-->
 </body>
 
