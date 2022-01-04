@@ -10,26 +10,18 @@
 }
 else
 {
-	<div class="container">
-		<div class="row mt-3">
-			<div class="d-flex">
-				<div class="card-columns align-self-center">
-					@foreach (var video in Videos.YouTubeVideos)
-					{
-						<_YouTubeShow youTubeVideo=video />
-					}
-				</div>
-			</div>
+	<div class="row mt-3">
+		<div class="card-deck">
+			@foreach (var video in Videos.YouTubeVideos)
+			{
+				<_YouTubeShow youTubeVideo=video />
+			}
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-md-12 text-center mb-3">
+		<div class="col-md-12 text-center mt-3 mb-3">
 			<a href="@Videos.MoreVideosUrl" class="btn btn-primary" target="_blank">See More Episodes</a>
 		</div>
 	</div>
-}
-
-@code {
-
 }

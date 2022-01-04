@@ -7,12 +7,14 @@ html {
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background: #EEEEEE;
-    /*margin-bottom: 60px;*/
 }
 
-.main {
-    position: relative;
-    min-height: 98vh;
+#app {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 header {
@@ -38,15 +40,11 @@ nav .navbar-nav li a {
 footer {
     font-weight: bolder;
     font-size: small;
-
     position: relative;
-    
     left: 0;
     bottom: 0;
-    width: 100vw;   /* Full width */
-    height: 3rem;   /* Footer height */
-    
-    /* background-color: #0054A6;  rgb(0, 84, 166) hsl(210, 100%, 33%) */
+    width: 100vw; /* Full width */
+    min-height: 3rem; /* Footer height */
     background-color: #9EABCA; /* rgb(158, 171, 202) hsl(222, 29%, 71%) */
 }
 
@@ -107,50 +105,33 @@ a, .btn-link {
 }
 
 @media (min-width: 576px) {
-    .card-columns {
-        column-count: 1;
-    }
 }
 
 @media (min-width: 768px) {
     html {
         font-size: 16px;
     }
-
-    .card-columns {
-        column-count: 2;
-    }
 }
 
 @media (min-width: 992px) {
-    #maincards.card-columns {
-        column-count: 3;
-    }
-
-    .card-columns {
-        column-count: 3;
-    }
 }
 
 @media (min-width: 1200px) {
-    #maincards.card-columns {
-        column-count: 2;
-    }
-
-    .card-columns {
-        column-count: 4;
-    }
 }
 
 .card {
-    display: flex;
-    min-height: 420px;
+    min-width: 18rem;
+}
+
+/*.card {*/
+    /*display: flex;*/
+    /*min-height: 420px;
     background-color: #fff;
     margin: 0px 0px 20px 0px !important;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border: none;
 }
-    .card .card-date {
+ .card-date {
         position: absolute;
         width: fit-content;
         padding: 5px 10px;
@@ -163,21 +144,5 @@ a, .btn-link {
 
     .card .card-footer a {
         text-decoration: none;
-    }
+    }*/
 
-/*.card {
-    border: none;
-    break-inside: avoid;
-    width: 18rem;
-    min-height: 420px;
-}
-*/
-
-/*.card-footer {*/
-/*    width: 100%;
-    height: 40px;
-*/    /*position: relative;
-    bottom: 0;
-    border: 4px solid blue;*/
-    /*top: calc(100% - 40px);*/
-/*}*/

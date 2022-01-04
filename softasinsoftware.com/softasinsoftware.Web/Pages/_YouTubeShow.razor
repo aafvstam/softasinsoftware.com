@@ -1,35 +1,23 @@
 ﻿@using softasinsoftware.Shared.Models
 
-<div class="card" style="width: 18rem;">
-  
-  <div class="card-date">
-    @youTubeVideo.ShowDate.Date.ToShortDateString()
-  </div>
-  <img class="card-img-top" src="@youTubeVideo.ThumbnailUrl" alt="@youTubeVideo.Title">
-  <div class="card-body">
-    <h5 class="card-title">@youTubeVideo.Title</h5>
-  </div>
-   <div class="card-footer text-muted text-center">
-     <a href="@youTubeVideo.Url">Goto YouTube</a>
-  </div>
-</div>
-
-@*<div class="card neumorphism youtube-show m-3 align-self-center bg-transparent">
-	<a href="@youTubeVideo.Url" target="_blank" title="Watch this episode">
-		<div>
-			<img class="card-img-top" src="@youTubeVideo.ThumbnailUrl" alt="@youTubeVideo.Title" asp-append-version="true">
-		</div>
-	</a>
-
+<div class="card neumorphism mt-3">
+	<img class="card-img-top" src="@youTubeVideo.ThumbnailUrl" alt="@youTubeVideo.Title">
 	<div class="card-body">
-		<h5 class="card-title">@youTubeVideo.Title</h5>
+		<h5 class="card-title text-center">@youTubeVideo.Title</h5>
+		<div class="card-text text-small">@Truncate(youTubeVideo.Description, 150)</div>
 	</div>
-
-	<small class="card-footer">@youTubeVideo.ShowDate.Date.ToShortDateString()</small>
+	<div class="card-footer text-center">
+		<div class="fw-bolder">@youTubeVideo.ShowDate.Date.ToShortDateString()</div>
+		<a href="@youTubeVideo.Url">Goto YouTube</a>
+	</div>
 </div>
-*@
 
 @code {
 	[Parameter]
 	public YouTubeVideo youTubeVideo { get; set; }
+
+	public static string Truncate(string source, int length)
+	{
+		return source.Substring(0, Math.Min(length, source.Length)) + " ...";
+	}
 }

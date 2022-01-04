@@ -1,59 +1,81 @@
-﻿<!-- https://useiconic.com/open 
-    To Do: Attribute Page
+﻿<!-- https://useiconic.com/open
+	To Do: Attribute Page
 -->
 
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 navbar-light" style="background-color: #9EABCA;">
-    <div class="container">
+	<div class="container">
 
-        <a class="navbar-brand" href="https://www.softasinsoftware.com">
+		<a class="navbar-brand" href="https://www.softasinsoftware.com">
 			<img src="/images/face.png" height="40" />
 		</a>
 
-        <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+		<button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-        <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <NavLink class="nav-link text-dark active" href="" Match="NavLinkMatch.All">
-                        <span class="oi oi-home" aria-hidden="true"></span> Home
-                    </NavLink>                
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link text-dark" href="counter">
-                        <span class="oi oi-plus" aria-hidden="true"></span> Counter
-                    </NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link text-dark" href="admin">
-                        <span class="oi oi-shield" aria-hidden="true"></span> Admin
-                    </NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link text-dark" href="https://blog.softasinsoftware.com" target="_blank">
-                        <span class="oi oi-pencil" aria-hidden="true"></span> Blog
-                    </NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link" href="about">
-                        <span class="oi oi-person" aria-hidden="true"></span> About
-                    </NavLink>
-                </li>
-            </ul>
-        </div>
-    </div>
+		<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+			<ul class="navbar-nav flex-grow-1">
+				<li class="nav-item">
+					<NavLink class="nav-link text-dark active" href="" Match="NavLinkMatch.All">
+						<span class="oi oi-home" aria-hidden="true"></span> Home
+					</NavLink>
+				</li>
+				<li class="nav-item">
+					<NavLink class="nav-link text-dark" href="schedule">
+						<span class="oi oi-calendar" aria-hidden="true"></span> Schedule
+					</NavLink>
+				</li>
+
+				<li class="nav-item">
+					<NavLink class="nav-link text-dark" href="gear">
+						<span class="oi oi-headphones" aria-hidden="true"></span> Gear
+					</NavLink>
+				</li>
+
+				<li class="nav-item">
+					<NavLink class="nav-link text-dark" href="contact">
+						<span class="oi oi-phone" aria-hidden="true"></span> Contact
+					</NavLink>
+				</li>
+
+
+				<li class="nav-item">
+					<NavLink class="nav-link text-dark" href="https://blog.softasinsoftware.com" target="_blank">
+						<span class="oi oi-pencil" aria-hidden="true"></span> Blog
+					</NavLink>
+				</li>
+
+				<li class="nav-item">
+					<NavLink class="nav-link" href="ideas">
+						<span class="oi oi-lightbulb" aria-hidden="true"></span> Ideas
+					</NavLink>
+				</li>
+
+				<li class="nav-item">
+					<NavLink class="nav-link" href="about">
+						<span class="oi oi-person" aria-hidden="true"></span> About
+					</NavLink>
+				</li>
+
+				<li class="nav-item">
+					<NavLink class="nav-link text-dark" href="admin">
+						<span class="oi oi-shield" aria-hidden="true"></span> Admin
+					</NavLink>
+				</li>
+			</ul>
+		</div>
+	</div>
 </nav>
 
 @code {
-    bool collapseNavMenu = true;
+	bool collapseNavMenu = true;
 
-    string baseMenuClass = "navbar-collapse d-sm-inline-flex flex-sm-row-reverse";
+	string baseMenuClass = "navbar-collapse d-sm-inline-flex flex-sm-row-reverse";
 
-    string NavMenuCssClass => baseMenuClass + (collapseNavMenu ? " collapse" : "");
+	string NavMenuCssClass => baseMenuClass + (collapseNavMenu ? " collapse" : "");
 
-    void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+	void ToggleNavMenu()
+	{
+		collapseNavMenu = !collapseNavMenu;
+	}
 }

@@ -69,6 +69,11 @@ namespace softasinsoftware.API.Services
                 ApplicationName = "SoftAsInSoftware"                // _appSettings.YouTubeApplicationName,
             });
 
+            if (string.IsNullOrEmpty(youtubeService.ApiKey))
+			{
+                //TODO: return mock jsonfile 
+			}
+
             var listRequest = youtubeService.PlaylistItems.List("snippet");
             listRequest.PlaylistId = playlist;
             listRequest.MaxResults = this.NumberOfShows;

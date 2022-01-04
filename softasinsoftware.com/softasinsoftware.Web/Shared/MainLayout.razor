@@ -1,7 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="main">
-	@*<header class="header header-sticky">*@
 	<header class="d-flex align-items-center justify-content-center">
 		<img src="./images/logotext.png" />
 	</header>
@@ -13,11 +12,12 @@
 			@Body
 		</div>
 	</div>
-
-	<footer class="d-flex align-items-center justify-content-center">
-		@TrademarkMessage
-	</footer>
 </div>
+
+<footer class="d-flex align-items-center justify-content-center">
+	@TrademarkMessage
+</footer>
+
 
 @code {
 	public string TrademarkMessage { get; set; } = "©" + @DateTime.Now.Year + " Soft as in Software. All rights reserved.";
