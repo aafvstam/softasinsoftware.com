@@ -7,8 +7,12 @@
 		<div class="card-text text-small">@Truncate(youTubeVideo.Description, 150)</div>
 	</div>
 	<div class="card-footer text-center">
+		@if(youTubeVideo.IsOnAir)
+		{
+			<div class="card-live"><span class="oi oi-signal" aria-hidden="true"></span> Live</div>
+		}
 		<div class="fw-bolder">@youTubeVideo.ShowDate.Date.ToShortDateString()</div>
-		<a href="@youTubeVideo.Url">Goto YouTube</a>
+		<a href="@youTubeVideo.Url">Goto YouTube <span class="oi oi-external-link" aria-hidden="true"></span></a>
 	</div>
 </div>
 

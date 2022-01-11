@@ -123,6 +123,18 @@ a, .btn-link {
     min-width: 18rem;
 }
 
+.card-live {
+    position: absolute;
+    width: 100px;
+    padding: 5px 10px;
+    border-radius: 30px !important;
+    background-color: red;
+    color:white;
+    top: 10px;
+    right: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 /*.card {*/
     /*display: flex;*/
     /*min-height: 420px;

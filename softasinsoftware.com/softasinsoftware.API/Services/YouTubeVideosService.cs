@@ -88,15 +88,25 @@ namespace softasinsoftware.API.Services
                     ProviderId = item.Snippet.ResourceId.VideoId,
                     Title = item.Snippet.Title, // GetUsefulBitsFromTitle(item.Snippet.Title),
                     Description = item.Snippet.Description,
-                    ThumbnailUrl = item.Snippet.Thumbnails.Medium.Url,
+                    ThumbnailUrl = item.Snippet.Thumbnails.Medium != null ? item.Snippet.Thumbnails.Medium.Url : "https://wwww.softasinsoftware.com/dummy.jpg",
                     Url = GetVideoUrl(item.Snippet.ResourceId.VideoId, item.Snippet.PlaylistId, item.Snippet.Position ?? 0)
                 }).ToList()
             };
 
             foreach (var show in result.YouTubeVideos)
             {
-                show.ShowDate = await GetVideoPublishDate(youtubeService, show.ProviderId);
-                show.LiveBroadcastContent = await GetVideoLiveBroadcastContent(youtubeService, show.ProviderId);
+                var videoRequest = youtubeService.Videos.List("snippet"); // client
+                videoRequest.Id = show.ProviderId; // videoID
+                videoRequest.MaxResults = 1;
+
+                var video = await videoRequest.ExecuteAsync();
+
+                if (video.Items.Count > 0)
+                {
+                    var snippet = video.Items[0].Snippet;
+                    show.ShowDate = DateTimeOffset.Parse(snippet.PublishedAtRaw, null, DateTimeStyles.RoundtripKind);
+                    show.LiveBroadcastContent = snippet.LiveBroadcastContent;
+                }
             }
 
             if (!string.IsNullOrEmpty(playlistItems.NextPageToken))
@@ -105,30 +115,6 @@ namespace softasinsoftware.API.Services
             }
 
             return result;
-        }
-
-        private static async Task<DateTimeOffset> GetVideoPublishDate(YouTubeService client, string videoId)
-        {
-            var videoRequest = client.Videos.List("snippet");
-            videoRequest.Id = videoId;
-            videoRequest.MaxResults = 1;
-
-            var video = await videoRequest.ExecuteAsync();
-            var rawDate = video.Items[0].Snippet.PublishedAtRaw;
-
-            return DateTimeOffset.Parse(rawDate, null, DateTimeStyles.RoundtripKind);
-        }
-
-        private static async Task<string> GetVideoLiveBroadcastContent(YouTubeService client, string videoId)
-        {
-            var videoRequest = client.Videos.List("snippet");
-            videoRequest.Id = videoId;
-            videoRequest.MaxResults = 1;
-
-            var video = await videoRequest.ExecuteAsync();
-            var liveBroadcastContent = video.Items[0].Snippet.LiveBroadcastContent;
-
-            return liveBroadcastContent;
         }
 
         private static string GetUsefulBitsFromTitle(string title)

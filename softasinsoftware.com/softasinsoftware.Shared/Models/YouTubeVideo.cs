@@ -45,18 +45,7 @@ namespace softasinsoftware.Shared.Models
         {
             get 
             {
-                if (ActualStartTime.HasValue && ActualEndTime.HasValue)
-                {
-                    return false;
-                }
-
-                if (ActualStartTime.HasValue && !ActualEndTime.HasValue)
-                {
-                    return true;
-                }
-
-                var scheduled = ScheduledStartTime.Value;
-                return CheckHasStarted(DateTime.UtcNow, scheduled);
+                return (this.LiveBroadcastContent.Equals("live", StringComparison.OrdinalIgnoreCase) == true);
             }
         }
 
