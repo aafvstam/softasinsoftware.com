@@ -38,13 +38,14 @@ nav .navbar-nav li a {
 }
 
 footer {
+    flex-direction: column;
     font-weight: bolder;
     font-size: small;
     position: relative;
     left: 0;
     bottom: 0;
     width: 100vw; /* Full width */
-    min-height: 3rem; /* Footer height */
+    min-height: 5rem; /* Footer height */
     background-color: #9EABCA; /* rgb(158, 171, 202) hsl(222, 29%, 71%) */
 }
 

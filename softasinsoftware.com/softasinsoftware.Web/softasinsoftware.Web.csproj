@@ -25,4 +25,8 @@
     <ProjectReference Include="..\softasinsoftware.Shared\softasinsoftware.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\scripts\" />
+  </ItemGroup>
+
 </Project>
