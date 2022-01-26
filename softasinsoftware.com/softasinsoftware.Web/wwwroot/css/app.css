@@ -24,10 +24,10 @@ header {
     height: 15rem; /* Header height */
 }
 
-header img {
-    width:50%;
-    max-width: 800px ;
-}
+    header img {
+        width: 50%;
+        max-width: 800px;
+    }
 
 nav .navbar-nav li a {
     color: black !important;
@@ -130,15 +130,27 @@ a, .btn-link {
     padding: 5px 10px;
     border-radius: 30px !important;
     background-color: red;
-    color:white;
+    color: white;
+    top: 10px;
+    right: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card-upcoming {
+    position: absolute;
+    width: 100px;
+    padding: 5px 10px;
+    border-radius: 30px !important;
+    background-color: black;
+    color: white;
     top: 10px;
     right: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 /*.card {*/
-    /*display: flex;*/
-    /*min-height: 420px;
+/*display: flex;*/
+/*min-height: 420px;
     background-color: #fff;
     margin: 0px 0px 20px 0px !important;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -159,3 +171,32 @@ a, .btn-link {
         text-decoration: none;
     }*/
 
+.btn-primary.btn-youtube {
+    background-color: #c4302b;
+    border-color: #c4302b;
+}
+
+.btn-primary.btn-twitter {
+    background-color: #00acee;
+    border-color: #00acee;
+}
+
+.btn-primary.btn-twitch {
+    background-color: #6441a5;
+    border-color: #6441a5;
+}
+
+.btn-primary.btn-youtube:active {
+    background: #c4302b;
+    border-color: #c4302b;
+}
+
+.btn-primary.btn-twitter:active {
+    background-color: #00acee;
+    border-color: #00acee;
+}
+
+.btn-primary.btn-twitch:active {
+    background-color: #6441a5;
+    border-color: #6441a5;
+}

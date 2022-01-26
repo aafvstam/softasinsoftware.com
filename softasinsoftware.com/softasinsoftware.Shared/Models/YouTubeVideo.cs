@@ -38,7 +38,14 @@ namespace softasinsoftware.Shared.Models
                              (DateTime.UtcNow - ScheduledStartTime.Value).TotalDays <= 14;
         
         [JsonIgnore]
-        public bool IsInFuture => ScheduledStartTime.Value > DateTime.UtcNow;
+        public bool IsInFuture
+        {
+            get
+            {
+                return (this.LiveBroadcastContent.Equals("upcoming", StringComparison.OrdinalIgnoreCase) == true);
+            }
+        }
+
 
         [JsonIgnore]
         public bool IsOnAir

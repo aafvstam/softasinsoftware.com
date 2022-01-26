@@ -11,6 +11,13 @@
 		{
 			<div class="card-live"><span class="oi oi-signal" aria-hidden="true"></span> Live</div>
 		}
+
+		@if(youTubeVideo.IsInFuture)
+		{
+			<div class="card-upcoming">Upcoming</div>
+		}
+
+		
 		<div class="fw-bolder">@youTubeVideo.ShowDate.Date.ToShortDateString()</div>
 		<a href="@youTubeVideo.Url">Goto YouTube <span class="oi oi-external-link" aria-hidden="true"></span></a>
 	</div>
@@ -18,7 +25,7 @@
 
 @code {
 	[Parameter]
-	public YouTubeVideo youTubeVideo { get; set; }
+	public YouTubeVideo youTubeVideo { get; set; } = default!;
 
 	public static string Truncate(string source, int length)
 	{

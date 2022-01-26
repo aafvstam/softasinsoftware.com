@@ -1,0 +1,13 @@
+﻿@page "/youtube"
+@page "/subscribe"
+
+@inject NavigationManager NavManager
+
+<h1>Redirect to YouTube</h1>
+
+@code {
+    protected override void OnInitialized()
+    {
+        NavManager.NavigateTo("https://www.youtube.com/c/SoftAsInSoftware?sub_confirmation=1");
+    }
+}

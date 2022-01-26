@@ -13,9 +13,6 @@ namespace softasinsoftware.Web.Pages
         [Inject]
         public IHttpClientFactory? ClientFactory { get; private set; }
 
-
-
-
         public YouTubeVideoList Videos { get; private set; } = new YouTubeVideoList();
 
         public string MoreShowsUrl { get; private set; } = String.Empty;
