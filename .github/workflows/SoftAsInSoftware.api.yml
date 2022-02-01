@@ -32,6 +32,12 @@ jobs:
           dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
       - name: Restore
         run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+      - name: Substitute String
+        uses: bluwy/substitute-string-action@v1
+        with:
+          # The plain input text. This will take precendence if `_input-file` is also specified.
+          _input-text: "https://localhost:7067/"
+          localhost:7067: "softasinsoftwareapi.azurewebsites.net"
       - name: Build Web
         run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
       - name: Test
