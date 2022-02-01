@@ -8,7 +8,8 @@ using System.Text.Json;
 
 namespace softasinsoftware.Web.Pages
 {
-    public partial class Index
+    public partial class HomePage
+
     {
         [Inject]
         public IHttpClientFactory? ClientFactory { get; private set; }

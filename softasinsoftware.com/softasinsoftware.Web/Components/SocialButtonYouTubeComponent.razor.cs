@@ -1,8 +1,8 @@
 ﻿namespace softasinsoftware.Web.Components
 {
-    public class SocialButtonYouTubeBase : SocialButtonBase
+    public class SocialButtonYouTubeComponentBase : SocialButtonComponentBase
     {
-        public SocialButtonYouTubeBase()
+        public SocialButtonYouTubeComponentBase()
         {
             Icon = "fab fa-youtube";
         }

@@ -1,13 +1,12 @@
 ﻿namespace softasinsoftware.Web.Models
 {
-    public class YouTubeAPIClient
+    public class YouTubeAPIClientModel
     {
         public HttpClient Client { get; }
 
-        public YouTubeAPIClient(HttpClient client)
+        public YouTubeAPIClientModel(HttpClient client)
         {
             Client = client;
         }
-
     }
 }

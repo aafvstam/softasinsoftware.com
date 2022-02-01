@@ -3,7 +3,7 @@ using Microsoft.JSInterop;
 
 namespace softasinsoftware.Web.Components
 {
-    public class SocialButtonBase : ComponentBase
+    public class SocialButtonComponentBase : ComponentBase
     {
         [Parameter]
         public string AccountId { get; set; } = String.Empty;
