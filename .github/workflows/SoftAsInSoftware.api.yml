@@ -32,12 +32,6 @@ jobs:
           dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
       - name: Restore
         run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
-      - name: Find and Replace
-        uses: nguyenvanuyn96/str-find-and-replace-action@master
-        with:
-          find: "localhost:7067"
-          replace: "softasinsoftwareapi.azurewebsites.net"
-          include: "Program.cs"
       - name: Build Web
         run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
       - name: Test
