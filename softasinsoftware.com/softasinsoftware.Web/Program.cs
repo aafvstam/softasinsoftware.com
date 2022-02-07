@@ -9,8 +9,14 @@ builder.RootComponents.Add<App>("#app");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // todo take out hardcoded API URI
-builder.Services.AddHttpClient("softasinsoftware.API", client => client.BaseAddress = new Uri("https://softasinsoftwareapi.azurewebsites.net/"));
-// builder.Services.AddHttpClient("softasinsoftware.API", client => client.BaseAddress = new Uri("https://localhost:7067/"));
+if (builder.HostEnvironment.IsDevelopment())
+{
+    builder.Services.AddHttpClient("softasinsoftware.API", client => client.BaseAddress = new Uri("https://localhost:7067/"));
+}
+else
+{
+    builder.Services.AddHttpClient("softasinsoftware.API", client => client.BaseAddress = new Uri("https://softasinsoftwareapi.azurewebsites.net/"));
+}
 
 builder.Services.AddMsalAuthentication(options =>
 {
