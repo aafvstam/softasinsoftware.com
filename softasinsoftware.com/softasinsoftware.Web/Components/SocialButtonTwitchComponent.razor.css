@@ -1,4 +1,22 @@
-﻿.btn-twitch {
+﻿/* initial state */
+.btn-twitch {
+    color: white;
     background-color: #6441a5;
     border-color: #6441a5;
+}
+
+/* release */
+.btn-twitch:focus {
+    background-color: #6441a5;
+}
+
+/* click */
+.btn-twitch:active {
+    background-color: lightgray;
+}
+
+/* hover */
+.btn-twitch:hover {
+    border-color: white;
+    border-width: medium;
 }

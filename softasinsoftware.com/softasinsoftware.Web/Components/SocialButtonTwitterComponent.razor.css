@@ -1,4 +1,22 @@
-﻿.btn-twitter {
+﻿/* initial state */
+.btn-twitter {
+    color: white;
     background-color: #00acee;
     border-color: #00acee;
+}
+
+/* release */
+.btn-twitter:focus {
+    background-color: #00acee;
+}
+
+/* click */
+.btn-twitter:active {
+    background-color: lightgray;
+}
+
+/* hover */
+.btn-twitter:hover {
+    border-color: white;
+    border-width: medium;
 }

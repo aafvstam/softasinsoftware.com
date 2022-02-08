@@ -1,4 +1,22 @@
-﻿.btn-youtube {
+﻿/* initial state */
+.btn-youtube {
+    color: white;
     background-color: #c4302b;
     border-color: #c4302b;
+}
+
+/* release */
+.btn-youtube:focus {
+    background-color: #c4302b;
+}
+
+/* click */
+.btn-youtube:active {
+    background-color: lightgray;
+}
+
+/* hover */
+.btn-youtube:hover {
+    border-color: white;
+    border-width: medium;
 }

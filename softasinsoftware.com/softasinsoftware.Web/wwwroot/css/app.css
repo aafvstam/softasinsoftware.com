@@ -53,12 +53,6 @@ a, .btn-link {
     color: #0077cc;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
@@ -146,57 +140,4 @@ a, .btn-link {
     top: 10px;
     right: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-
-/*.card {*/
-/*display: flex;*/
-/*min-height: 420px;
-    background-color: #fff;
-    margin: 0px 0px 20px 0px !important;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border: none;
-}
- .card-date {
-        position: absolute;
-        width: fit-content;
-        padding: 5px 10px;
-        border-radius: 30px !important;
-        background-color: #fff;
-        top: 10px;
-        left: calc(50% + 30px);
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    }
-
-    .card .card-footer a {
-        text-decoration: none;
-    }*/
-
-.btn-primary.btn-youtube {
-    background-color: #c4302b;
-    border-color: #c4302b;
-}
-
-.btn-primary.btn-twitter {
-    background-color: #00acee;
-    border-color: #00acee;
-}
-
-.btn-primary.btn-twitch {
-    background-color: #6441a5;
-    border-color: #6441a5;
-}
-
-.btn-primary.btn-youtube:active {
-    background: #c4302b;
-    border-color: #c4302b;
-}
-
-.btn-primary.btn-twitter:active {
-    background-color: #00acee;
-    border-color: #00acee;
-}
-
-.btn-primary.btn-twitch:active {
-    background-color: #6441a5;
-    border-color: #6441a5;
 }
