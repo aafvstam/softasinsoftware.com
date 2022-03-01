@@ -24,9 +24,12 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1"});
 });
 
-builder.Services.AddCors(c =>
+builder.Services.AddCors(options =>
 {
-    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+    options.AddDefaultPolicy(builder =>
+    builder.WithOrigins("http://localhost:5000", "https://localhost:5001", "https://www.softasinsoftware.com")
+           .AllowAnyMethod()
+           .AllowAnyHeader());
 });
 
 builder.Services.AddSingleton<IMemoryCache, MemoryCache>();
@@ -45,7 +48,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors(options => options.AllowAnyOrigin());
+app.UseCors();
 
 app.MapGet("/youtubeplaylistvideos", async (IYouTubeVideosService youtubeservice) =>
 {
