@@ -1,0 +1,32 @@
+﻿@using softasinsoftware.Shared.Models
+
+
+<div class="card text-center neumorphism mt-3">
+  <div class="card-body">
+	<img src="/images/@gearItem.Image" alt="@gearItem.Name" height="100" width="auto">
+	<h5 class="card-title text-center">@gearItem.Name</h5>
+	<p class="card-text text-small">@Truncate(gearItem.Description, 150)</p>
+  </div>
+  <div class="card-footer text-muted">
+    <a href="@gearItem.URL" class="btn btn-primary">Goto Gear Item <span class="oi oi-external-link" aria-hidden="true"></span></a>
+  </div>
+</div>
+
+@*<div class="card neumorphism mt-3">
+	<img class="card-img-top card-gear" src="/images/@gearItem.Image" alt="@gearItem.Name" height="100" width="auto">
+	<div class="card-body">
+		<h5 class="card-title text-center">@gearItem.Name</h5>
+		<div class="card-text text-small">@Truncate(gearItem.Description, 150)</div>
+	</div>
+	<a href="@gearItem.URL">Goto Gear Item <span class="oi oi-external-link" aria-hidden="true"></span></a>
+</div>
+*@
+@code {
+	[Parameter]
+	public GearItem gearItem { get; set; } = default!;
+
+	public static string Truncate(string source, int length)
+	{
+		return source.Substring(0, Math.Min(length, source.Length)) + " ...";
+	}
+}
