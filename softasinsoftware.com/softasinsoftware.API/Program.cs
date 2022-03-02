@@ -8,9 +8,9 @@ using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("GearList") ?? "Data Source=gearlist.db";
+// var connectionString = builder.Configuration.GetConnectionString("GearList") ?? "Data Source=gearlist.db";
 
-builder.Services.AddSqlite<GearDbContext>(connectionString);
+// builder.Services.AddSqlite<GearDbContext>(connectionString);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -67,7 +67,7 @@ app.MapGet("/youtubeplaylistvideos", async (IYouTubeVideosService youtubeservice
 }).Produces<YouTubeVideoList>();
 
 // Get all Gear Items in a List
-app.MapGet("/gearlist", async (GearDbContext db) => await db.GearList.AsNoTracking().ToListAsync());
+// app.MapGet("/gearlist", async (GearDbContext db) => await db.GearList.AsNoTracking().ToListAsync());
 
 // Add a Gear Item to the List
 //app.MapPost("/gear", async (GearDb db, Gear gear) =>
@@ -108,5 +108,5 @@ app.MapGet("/gearlist", async (GearDbContext db) => await db.GearList.AsNoTracki
 //    return Results.Ok();
 //});
 
-app.CreateDbIfNotExists();
+// app.CreateDbIfNotExists();
 app.Run();
