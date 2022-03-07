@@ -8,8 +8,14 @@ using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-// var connectionString = builder.Configuration.GetConnectionString("GearList") ?? "Data Source=gearlist.db";
 
+builder.Services.AddDbContext<GearDbContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    // options.EnableSensitiveDataLogging();
+});
+
+// var connectionString = builder.Configuration.GetConnectionString("GearList") ?? "Data Source=gearlist.db";
 // builder.Services.AddSqlite<GearDbContext>(connectionString);
 
 // Add services to the container.
@@ -18,10 +24,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo {
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
         Title = "Soft as in Software API",
         Description = "Provides Data for Soft as in Software",
-        Version = "v1"});
+        Version = "v1"
+    });
 });
 
 builder.Services.AddCors(options =>
@@ -41,10 +49,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI( c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Soft as in Software API V1");
-    });
+    app.UseSwaggerUI(c =>
+   {
+       c.SwaggerEndpoint("/swagger/v1/swagger.json", "Soft as in Software API V1");
+   });
 }
 
 app.UseHttpsRedirection();
@@ -66,10 +74,10 @@ app.MapGet("/youtubeplaylistvideos", async (IYouTubeVideosService youtubeservice
     }
 }).Produces<YouTubeVideoList>();
 
-// Get all Gear Items in a List
-// app.MapGet("/gearlist", async (GearDbContext db) => await db.GearList.AsNoTracking().ToListAsync());
+//Get all Gear Items in a List
+app.MapGet("/gearlist", async (GearDbContext db) => await db.GearList.AsNoTracking().ToListAsync());
 
-// Add a Gear Item to the List
+//Add a Gear Item to the List
 //app.MapPost("/gear", async (GearDb db, Gear gear) =>
 //{
 //    await db.GearList.AddAsync(gear);
@@ -108,5 +116,5 @@ app.MapGet("/youtubeplaylistvideos", async (IYouTubeVideosService youtubeservice
 //    return Results.Ok();
 //});
 
-// app.CreateDbIfNotExists();
+app.CreateDbIfNotExists();
 app.Run();

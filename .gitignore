@@ -452,3 +452,6 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+/softasinsoftware.com/softasinsoftware.API/Data/SoftAsInSoftware.db
+/softasinsoftware.com/softasinsoftware.API/Data/SoftAsInSoftware.db-shm
+/softasinsoftware.com/softasinsoftware.API/Data/SoftAsInSoftware.db-wal

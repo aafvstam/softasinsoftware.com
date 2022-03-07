@@ -9,10 +9,10 @@
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<GearDbContext>();
 
-                //if (context.Database.EnsureCreated()) 
-                //{
+                if (context.Database.EnsureCreated()) 
+                {
                     DbInitializer.Initialize(context);
-                //}
+                }
             }
         }
     }
