@@ -1,0 +1,24 @@
+﻿@using softasinsoftware.Shared.Extensions.System
+@using softasinsoftware.Shared.Models
+
+<div class="card neumorphism mt-3">
+	<img class="card-img-top" src="@YouTubeVideo.ThumbnailUrl" alt="@YouTubeVideo.Title">
+	<div class="card-body">
+		<h5 class="card-title text-center">@YouTubeVideo.Title</h5>
+		<div class="card-text text-small">@YouTubeVideo.Description?.Truncate(150)</div>
+	</div>
+	<div class="card-footer text-center">
+		@if(YouTubeVideo.IsOnAir)
+		{
+			<div class="card-live"><span class="oi oi-signal" aria-hidden="true"></span> Live</div>
+		}
+
+		@if(YouTubeVideo.IsInFuture)
+		{
+			<div class="card-upcoming">Upcoming</div>
+		}
+		
+		<div class="fw-bolder">@YouTubeVideo.ShowDate.Date.ToShortDateString()</div>
+		<a href="@YouTubeVideo.Url" target="_blank">Goto YouTube <span class="oi oi-external-link" aria-hidden="true"></span></a>
+	</div>
+</div>

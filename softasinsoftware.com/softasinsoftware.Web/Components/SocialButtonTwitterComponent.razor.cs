@@ -1,8 +1,8 @@
 ﻿namespace softasinsoftware.Web.Components
 {
-    public class SocialButtonTwitterComponentBase : SocialButtonComponentBase
+    public partial class SocialButtonTwitterComponent : SocialButtonComponent
     {
-        public SocialButtonTwitterComponentBase()
+        public SocialButtonTwitterComponent()
         {
             Icon = "fab fa-twitter";
         }

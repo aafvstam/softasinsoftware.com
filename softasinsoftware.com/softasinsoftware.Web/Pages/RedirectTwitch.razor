@@ -1,0 +1,12 @@
+﻿@page "/twitch"
+
+@inject NavigationManager NavManager
+
+<h1>Redirect to Twitch</h1>
+
+@code {
+    protected override void OnInitialized()
+    {
+        NavManager.NavigateTo("https://www.twitch.tv/softasinsoftware");
+    }
+}

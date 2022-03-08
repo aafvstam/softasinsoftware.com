@@ -117,25 +117,6 @@ namespace softasinsoftware.API.Services
             return result;
         }
 
-        private static string GetUsefulBitsFromTitle(string title)
-        {
-            if (string.IsNullOrEmpty(title)) return string.Empty;
-
-            if (!title.Any(c => c == '-'))
-            {
-                return title;
-            }
-
-            var lastHyphen = title.IndexOf('-');
-            if (lastHyphen >= 0)
-            {
-                string? result = title[(lastHyphen + 1)..].Trim();
-                return result;
-            }
-
-            return string.Empty;
-        }
-
         private static string GetVideoUrl(string id, string playlistId, long itemIndex)
         {
             var encodedId = UrlEncoder.Default.Encode(id);

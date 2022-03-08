@@ -3,7 +3,7 @@ using Microsoft.JSInterop;
 
 namespace softasinsoftware.Web.Components
 {
-    public class SocialButtonComponentBase : ComponentBase
+    public partial class SocialButtonComponent
     {
         [Parameter]
         public string AccountId { get; set; } = String.Empty;
@@ -14,7 +14,7 @@ namespace softasinsoftware.Web.Components
         [Inject]
         public IJSRuntime JsRuntime { get; set; } = default!;
 
-        internal string Icon { get; set; } = String.Empty;
+        public string Icon { get; set; } = String.Empty;
         internal string Url { get; set; } = String.Empty;
 
         public async Task NavigateToNewTab()

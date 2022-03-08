@@ -3,20 +3,17 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.OpenApi.Models;
 
 using softasinsoftware.API;
-using softasinsoftware.API.Data;
 using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
+using softasinsoftware.API.Extensions.Microsoft.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<GearDbContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
-    // options.EnableSensitiveDataLogging();
+    options.EnableSensitiveDataLogging(false);
 });
-
-// var connectionString = builder.Configuration.GetConnectionString("GearList") ?? "Data Source=gearlist.db";
-// builder.Services.AddSqlite<GearDbContext>(connectionString);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -35,7 +32,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
-    builder.WithOrigins("http://localhost:5000", "https://localhost:5001", "https://www.softasinsoftware.com")
+    builder.WithOrigins("http://localhost:5000", "https://localhost:5001", "https://www.softasinsoftware.com", "https://softasinsoftware.com")
            .AllowAnyMethod()
            .AllowAnyHeader());
 });

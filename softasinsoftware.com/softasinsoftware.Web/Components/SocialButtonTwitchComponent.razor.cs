@@ -1,8 +1,8 @@
 ﻿namespace softasinsoftware.Web.Components
 {
-    public class SocialButtonTwitchComponentBase : SocialButtonComponentBase
+    public partial class SocialButtonTwitchComponent
     {
-        public SocialButtonTwitchComponentBase()
+        public SocialButtonTwitchComponent()
         {
             Icon = "fab fa-twitch";
         }
