@@ -89,11 +89,13 @@ namespace softasinsoftware.API.Data
                 },
                 new GearItem
                 {
-                    Name = "",
-                    Description = "",
-                    URL = "",
-                    ShortURL = "",
-                    Image = ""
+                    Name = "Sigma 18-50mm F2.8 DC DN | C voor Sony E",
+                    Description = "Sigma 18-50mm F2.8 DC DN Contemporary for Sony E",
+                    URL = "https://www.amazon.com/18-50mm-F2-8-DC-Contemporary-Sony/dp/B09JVBB36L?crid=M2A43ZH5H8Y8&keywords=B09JVBB36L&qid=1650204759&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=b09jvbb36l%2Caps%2C114&sr=8-1&linkCode=ll1&tag=softasinsoftw-20&linkId=674827f8a5eeef6febfed6802268df7c&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/37ugKfs",
+                    URLAmazonNL = "https://www.amazon.nl/Sigma-18-50mm-F2-8-voor-Sony/dp/B09JVBB36L?crid=1QNF2AOD25KHZ&keywords=sigma+18-50mm+f2.8&qid=1650204039&sprefix=sigma%2Caps%2C61&sr=8-1&linkCode=ll1&tag=softasinsoftw-21&linkId=b9bbc299ef3a300f81f47269623ff29a&language=nl_NL&ref_=as_li_ss_tl",
+                    ShortURLAmazonNL = "https://amzn.to/38QuDVD",
+                    Image = "71OBbXtQ6vL._AC_SL1500_.jpg"
                 },
                 new GearItem
                 {

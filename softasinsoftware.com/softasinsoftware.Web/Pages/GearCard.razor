@@ -13,5 +13,11 @@
 		<a href="@GearItem.URL" class="btn btn-primary" target="_blank">
 			Info Amazon <span class="oi oi-external-link" aria-hidden="true"></span>
 		</a>
+		@if (string.IsNullOrEmpty(GearItem.URLAmazonNL) == false)
+		{
+			<a href="@GearItem.URLAmazonNL" class="btn btn-primary ml-1" target="_blank">
+				Info Amazon NL <span class="oi oi-external-link" aria-hidden="true"></span>
+			</a>
+		}
 	</div>
 </div>
