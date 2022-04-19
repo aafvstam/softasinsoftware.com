@@ -7,6 +7,8 @@
         public string? Description { get; set; }
         public string? URL { get; set; }
         public string? ShortURL { get; set; }
+        public string? URLAmazonNL { get; set; }
+        public string? ShortURLAmazonNL { get; set; }
         public string? Image { get; set; }
     }
 }
