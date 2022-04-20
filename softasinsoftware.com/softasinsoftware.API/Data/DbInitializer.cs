@@ -19,72 +19,72 @@ namespace softasinsoftware.API.Data
                 {
                     Name = "Elgato Lights",
                     Description = "Elgato Key Light - Professional 2800 lumens Studio Light with desk clamp for Streaming, Recording and Video Conferencing, Temperature and Brightness app-adjustable on Mac, PC, iOS, Android",
-                    URL = "https://www.amazon.com/gp/product/B07L755X9G/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07L755X9G&linkCode=as2&tag=softasinsoftw-20&linkId=73f92f8d3ad91250ce55dcb0a1be4234",
-                    ShortURL = "https://amzn.to/32OHVPP",
+                    URL = "https://www.amazon.com/gp/product/B07L755X9G?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=9c7f9acb01e042f6aecc912a7903843f&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3jMmGmE",
                     Image = "Elgato Lights.jpg"
                 },
                 new GearItem
                 {
                     Name = "Elgato Cam Link",
-                    Description = "Elgato Cam Link 4K, External Camera Capture Card, Stream and Record with DSLR, Camcorder, ActionCam as Webcam in 1080p60, 4K30 for Video Conferencing, Home Office, Gaming, on OBS, Zoom, Teams, PC/Mac",
-                    URL = "https://www.amazon.com/gp/product/B07K3FN5MR/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07K3FN5MR&linkCode=as2&tag=softasinsoftw-20&linkId=51f8a0b288e7a72a98b2e5f02b68fc01",
-                    ShortURL = "https://amzn.to/3pPnxXC",
+                    Description = "With Cam Link 4K, use your DSLR, camcorder or action cam as a professional webcam on your PC or Mac. Stream or record in stunning 1080p60 quality or even 4K at 30 fps. And broadcast live via any platform in no time thanks to ultra-low latency technology. Say goodbye to maxing out your memory card mid-shoot or discovering shoddy shots while editing. When recording with Cam Link 4K, all content is stored directly on your hard drive while real-time, full-screen feedback lets you polish scenes on the spot. Your camera has never felt more powerful.",
+                    URL = "https://www.amazon.com/gp/product/B07K3FN5MR?ie=UTF8&th=1&linkCode=ll1&tag=softasinsoftw-20&linkId=fe060a93415221034d3ed18b87700998&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3Mb9vYJ",
                     Image = "Elgato Cam Link.jpg"
                 },
                 new GearItem
                 {
                     Name = "Elgato Stream Deck",
                     Description = "Stream Deck puts 15 LCD keys at your fingertips for ultimate studio control. Simply tap to switch scenes, launch media, tweet your feats and more. Personalize your keys with custom icons or choose from hundreds, and get visual feedback every time you execute a command. With Stream Deck, maximize your production value and focus on what matters most: Your audience. Interface Integrated USB 2.0 cable.",
-                    URL = "https://www.amazon.com/gp/product/B06XKNZT1P/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B06XKNZT1P&linkCode=as2&tag=softasinsoftw-20&linkId=1b42b66ccfc5cefe386fe7b8f98a61e8",
-                    ShortURL = "https://amzn.to/3pQy4C0",
+                    URL = "https://www.amazon.com/gp/product/B06XKNZT1P?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=9332d55db96f1e9e5937949f47b416b2&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3Mbanwt",
                     Image = "Elgato Stream Deck.jpg"
                 },
                 new GearItem
                 {
                     Name = "Bose QC25",
                     Description = "Bose QuietComfort 25 Acoustic Noise Cancelling Headphones for Apple devices - Black, Wired",
-                    URL = "https://www.amazon.com/gp/product/B075V33WMN/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B075V33WMN&linkCode=as2&tag=softasinsoftw-20&linkId=4d76cc064ec85803e31d17dda69c00c4",
-                    ShortURL = "https://amzn.to/3eOkj0k",
+                    URL = "https://www.amazon.com/gp/product/B075V33WMN?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=57e7f944f151df2d13947511849e2dd8&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3rvr9OM",
                     Image = "Bose QC25.jpg"
                 },
                 new GearItem
                 {
                     Name = "Rode Procaster Broadcast Dynamic Vocal Microphone",
-                    Description = "The RØDE Procaster is a broadcast-quality dynamic microphone, specifically designed to offer no-compromise performance for voice applications in the broadcast environment. It features a tight polar pattern and tailored-for-voice frequency response. It also features an internal pop filter to minimize plosive sounds that can overload the microphone capsule and distort the audio. Its high output dynamic capsule and balanced low impedance output make it an ideal broadcast and voice over microphone.",
-                    URL = "https://www.amazon.com/gp/product/B001IPUJJI/ref=as_li_tl?ie=UTF8&tag=softasinsoftw-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B001IPUJJI&linkId=738b836b5234dcc7c7f438fafe878d57",
-                    ShortURL = "https://amzn.to/3qHU4hz",
+                    Description = "Designed as a no-compromise microphone for On-Air broadcast use, the Rode Procaster Broadcast Dynamic Vocal Microphone is one of the ultimate broadcast quality mics for the 21st century. Featuring a tight polar pattern and tailored-for-voice frequency response, the Procaster is perfect for every application where a great sounding, rugged microphone with superior ambient noise rejection is demanded. Plus, the Procaster is affordable and features an internal pop-filter to reduce plosives. Includes stand mount, 3/8 inch adaptor and zip pouch. Rode Procaster Features Broadcast quality sound High output dynamic capsule Balanced, low impedance output Internal shock mounting of capsule for low handling noise Internal pop-filter to reduce plosives Robust..",
+                    URL = "https://www.amazon.com/gp/product/B001IPUJJI?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=d947a0efa5dc224ee2902444b92c56e7&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3EmmnIM",
                     Image = "Rode Procaster Broadcast Dynamic Vocal Microphone.jpg"
                 },
                 new GearItem
                 {
                     Name = "Sony A6400",
-                    Description = "a6400 Mirrorless Interchangeable-Lens Camera (Body Only). Operating Temperature - 32 - 104 degrees F / 0 - 40 degrees C.",
-                    URL = "https://www.amazon.com/gp/product/B07MTWVN3M/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07MTWVN3M&linkCode=as2&tag=softasinsoftw-20&linkId=12b8c7fc88b617927224dca5f907e8e5",
-                    ShortURL = "https://amzn.to/32DupPb",
+                    Description = "Sony Alpha a6400 Mirrorless Camera: Compact APS-C Interchangeable Lens Digital Camera with Real-Time Eye Auto Focus, 4K Video & Flip Up Touchscreen - E Mount Compatible Cameras - ILCE-6400/B Body",
+                    URL = "https://www.amazon.com/gp/product/B07MTWVN3M?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=2bc1594d9280c9b396e7409a00612923&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3uMVGtG",
                     Image = "Sony A6400.jpg"
                 },
                 new GearItem
                 {
-                    Name = "Sigma Lens",
+                    Name = "Sigma 30mm 1.4 DC DN Contemporary",
                     Description = "The Sigma 30mm 1.4 DC DN Contemporary is a high performance prime with a large aperture of F1.4 designed for APS-C Mirrorless cameras including Sony E mount and Micro Four Thirds. The Contemporary line is part of Sigma Global Vision and is the perfect blend of image quality and compact size. The large aperture is great for lowlight and for creating depth of field and its small size makes it highly portable. A stepping motor provides fast and accurate autofocus and is highly useful for video work. Like all SGV lenses, each lens is hand crafted in our single factory in Aizu Japan, individually inspected before shipping",
-                    URL = "https://www.amazon.com/gp/product/B01C3SCKI6/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B01C3SCKI6&linkCode=as2&tag=softasinsoftw-20&linkId=f25233cb191e7a0d91b8a608790779df",
-                    ShortURL = "https://amzn.to/3qL1noH",
+                    URL = "https://www.amazon.com/gp/product/B01C3SCKI6?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=c16031fa6874275286e379b230a5d2f7&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3rwGL4V",
                     Image = "Sigma Lens.jpg"
                 },
                 new GearItem
                 {
                     Name = "Akai APC Mini",
                     Description = "Dexterous, versatile, and powerful, the only thing “mini” about this Ableton controller is the size. APC mini is the most portable all-in-one Ableton controller solution with Akai Pro build quality. Engineered specifically for the mobile musician and the desktop producer, APC mini concentrates the essential features of the APC40 mkII, Akai Pro’s flagship Ableton controller, into a compact design that fits in your backpack. The result is a dynamic instrument that empowers you to make music with Ableton Live anywhere.",
-                    URL = "https://www.amazon.com/gp/product/B00J3ZCVCS/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00J3ZCVCS&linkCode=as2&tag=softasinsoftw-20&linkId=3be8d93e79a65133683c828290232364",
-                    ShortURL = "https://amzn.to/3FTZOen",
+                    URL = "https://www.amazon.com/gp/product/B00J3ZCVCS?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=7734b51dfa4d8b253bff9354bd0470c9&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3JQqj5B",
                     Image = "Akai APC Mini.jpg"
                 },
                 new GearItem
                 {
                     Name = "Rode PSA1",
                     Description = "Rode PSA 1 Swivel Mount Studio Microphone Boom Arm.",
-                    URL = "https://www.amazon.com/gp/product/B001D7UYBO/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B001D7UYBO&linkCode=as2&tag=softasinsoftw-20&linkId=3f4449bd7f444ed3e13e86aff231383f",
-                    ShortURL = "https://amzn.to/32WPCDw",
+                    URL = "https://www.amazon.com/gp/product/B001D7UYBO?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=36369ee365eaad646892fc804af16f46&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3M9ZPhc",
                     Image = "Rode PSA1.jpg"
                 },
                 new GearItem
@@ -99,51 +99,51 @@ namespace softasinsoftware.API.Data
                 },
                 new GearItem
                 {
-                    Name = "",
-                    Description = "",
-                    URL = "",
-                    ShortURL = "",
-                    Image = ""
+                    Name = "Behringer XENYX 1204USB",
+                    Description = "Behringer XENYX 1204USB Premium 12-Input 2/2-Bus Mixer with XENYX Mic Preamps and Compressors, British EQ and USB/Audio Interface",
+                    URL = "https://www.amazon.com/gp/product/B00871VO5Y?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=f440b109e81b2540cc203a0d1e3bde61&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3vrSh2z",
+                    Image = "51HtYlo84SL._AC_.jpg"
                 },
                 new GearItem
                 {
-                    Name = "",
-                    Description = "",
-                    URL = "",
-                    ShortURL = "",
-                    Image = ""
+                    Name = "Rode PSM1",
+                    Description = "Rode PSM1 Shock Mount For Podcaster, Procaster, PSA1, and DS1 Microphones",
+                    URL = "https://www.amazon.com/gp/product/B000WA8KYG?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=dc88255c27fdaf5394923b620f6f8fcd&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3rvrNfa",
+                    Image = "71nOuIkWaGL._AC_SL1500_.jpg"
                 },
                 new GearItem
                 {
-                    Name = "",
-                    Description = "",
-                    URL = "",
-                    ShortURL = "",
-                    Image = ""
+                    Name = "DBX286s microphone pre-amplifier",
+                    Description = "The dbx 286s is a full featured channel strip processor that delivers a studio quality microphone/instrument preamplifier and four processors that can be used independently or in any combination. Why mic up vocals and instruments through a noisy, blurry mixer? The sonically pristine dbx 286s mic preamp has all the features you need, including wide-ranging input gain control, switchable +48V phantom power, and an 80Hz high-pass filter to remove low frequency hum, rumble or wind. Use the patented dbx over Easy compressor to transparently smooth out uneven acoustic tracks or deliver that classic 'in your face' Vocal performance that only a dbx compressor can. Eliminate vocal sibilance and high frequency distortion from instruments such as cymbals with the frequency Tenable De-Esser. Fine-tune the Enhancer HF detail control to add sparkle and Crispness to your tracks and make adjustments to the lf detail control to add fullness and depth to vocals and bass instruments while cleaning up the muddy low midrange frequencies. The separate threshold and ratio controls on the expander/gate allow you to subtly reduce headphone leakage or radically gate noisy guitar amps. And, the dbx 286s offers a full compliment of metering and status LEDs to visually guide you to achieving the right sound.",
+                    URL = "https://www.amazon.com/dbx-286s-Microphone-Channel-Processor/dp/B004LWH79A?crid=2NKYDNFGZUJVX&keywords=B004LWH79A&qid=1650205711&sprefix=b004lwh79a%2Caps%2C237&sr=8-1&th=1&linkCode=ll1&tag=softasinsoftw-20&linkId=57eb9fb2286df8e93a254c34ad2acc72&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/38KREt5",
+                    Image = "61GdC7ylERL._AC_SL1500_.jpg"
                 },
                 new GearItem
                 {
-                    Name = "",
-                    Description = "",
-                    URL = "",
-                    ShortURL = "",
-                    Image = ""
+                    Name = "Philips Hue Play",
+                    Description = "Connect it to Hue Hub (sold seperately) in order to control lights with your Hue App, Voice or Smart Home device. Compact design, full light experience. Create a vibrant ambiance with the Hue Play light bars. Choose from 16 million colors to experience different light effects. Lay it on the floor, let it stand on the cabinet, or mount it on the back of the TV and paint your wall with light. Sync your lights to music or movies using the Hue Sync app. This base kit provides 2 light points, 1 power supply unit, 2 table stands and 2 TV-mounting supports. Requires the Hue Hub (sold Separately) for the full Hue experience and to take advantage of voice activation. Purchase the Philips Hue Hub (Model: 458471). Search 'Philips Hue Hub' or 'B016H0QZ7I' to find this product on Amazon. Use the Hue dimmer switch, motion sensor, and other smart accessories to control the light bars.",
+                    URL = "https://www.amazon.com/gp/product/B07GXB3S7Z?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=bd8e06cfd13cea785014d5e72300cc61&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3vhLg44",
+                    Image = "519jIhifKoS._AC_SL1000_.jpg"
                 },
                 new GearItem
                 {
-                    Name = "",
-                    Description = "",
-                    URL = "",
-                    ShortURL = "",
-                    Image = ""
+                    Name = "Corsair K55",
+                    Description = "The CORSAIR K55 RGB PRO Gaming Keyboard lights up your desktop with five-zone dynamic RGB backlighting and powers up your gameplay with six easy to set up dedicated macro keys. The K55 RGB PRO is certified for IP42 dust and spill-resistance to stand up to wear, tear, and more, with a detachable palm rest to ensure all-day comfort, win after win.",
+                    URL = "https://www.amazon.com/gp/product/B08Y681W3X?ie=UTF8&linkCode=ll1&tag=softasinsoftw-20&linkId=89764a7f88b11fff42a10141bca78c66&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3JNlDgT",
+                    Image = "81XDJ20fJ+L._AC_SL1500_.jpg"
                 },
                 new GearItem
                 {
-                    Name = "",
-                    Description = "",
-                    URL = "",
-                    ShortURL = "",
-                    Image = ""
+                    Name = "Microsoft Comfort Mouse 4500 - Lochness Gray",
+                    Description = "Work in comfort, stay in control. Work anywhere with this full-featured mouse, which delivers comfort in either hand and the precise control of BlueTrack Technology at a great value.",
+                    URL = "https://www.amazon.com/Microsoft-Comfort-Mouse-4500-Lochness/dp/B00902BFGC?crid=2OS6RHMZ2AC0H&keywords=B00902BFGC&qid=1650205351&sprefix=b00902bfgc%2Caps%2C114&sr=8-1&th=1&linkCode=ll1&tag=softasinsoftw-20&linkId=c00f4860d45d1c6fcfe600dcb550e7a1&language=en_US&ref_=as_li_ss_tl",
+                    ShortURL = "https://amzn.to/3McuA56",
+                    Image = "51wD-PlQ+DL._AC_SL1500_.jpg"
                 },
                 new GearItem
                 {
