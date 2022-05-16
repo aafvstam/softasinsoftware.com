@@ -9,7 +9,7 @@ namespace softasinsoftware.API.Extensions.Microsoft.Extensions
             using var scope = host.Services.CreateScope();
 
             var services = scope.ServiceProvider;
-            var context = services.GetRequiredService<GearDbContext>();
+            var context = services.GetRequiredService<ApplicationDbContext>();
 
             if (context.Database.EnsureCreated())
             {

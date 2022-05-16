@@ -1,23 +1,22 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-
-@inject NavigationManager Navigation
-@inject SignOutSessionStateManager SignOutManager
-
-<AuthorizeView>
-    <Authorized>
-        Hello, @context.User.Identity?.Name!
-        <button class="nav-link btn btn-link" @onclick="BeginLogout">Log out</button>
-    </Authorized>
-    <NotAuthorized>
-        <a href="authentication/login">Log in</a>
-    </NotAuthorized>
+﻿<AuthorizeView>
+	<Authorized>
+		<li class="nav-item">
+			<NavLink class="nav-link text-dark" href="admin">
+				<span class="oi oi-shield" aria-hidden="true"></span>Admin
+			</NavLink>
+		</li>
+		<li class="nav-item">
+			<NavLink class="nav-link text-dark" href="LogOut">
+				<span class="oi oi-lock-unlocked" aria-hidden="true"></span>Logout, @context.User.Identity.Name
+			</NavLink>
+		</li>
+	</Authorized>
+	<NotAuthorized>
+		<li class="nav-item">
+			<NavLink class="nav-link text-dark" href="Login">
+				<span class="oi oi-lock-locked" aria-hidden="true"></span>Login
+			</NavLink>
+		</li>
+	</NotAuthorized>
 </AuthorizeView>
 
-@code{
-    private async Task BeginLogout(MouseEventArgs args)
-    {
-        await SignOutManager.SetSignOutState();
-        Navigation.NavigateTo("authentication/logout");
-    }
-}
