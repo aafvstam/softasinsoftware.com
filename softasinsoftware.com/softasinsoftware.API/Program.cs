@@ -137,7 +137,7 @@ app.MapDelete("/gear/{id}", async (ApplicationDbContext db, int id) =>
     return Results.Ok();
 });
 
-app.MapPost("/register-admin", async (UserManager<IdentityUser> userMgr) =>
+app.MapGet("/register-admin", async (UserManager<IdentityUser> userMgr) =>
 {
     // register admin
     var newUser = new IdentityUser

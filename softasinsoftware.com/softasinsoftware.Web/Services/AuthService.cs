@@ -57,5 +57,10 @@ namespace softasinsoftware.Web.Services
             ((ApiAuthenticationStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
             _httpClient.DefaultRequestHeaders.Authorization = null;
         }
+        public async Task<RegisterResult> InitDb()
+        {
+            var response = await _httpClient.GetAsync("register-admin");
+            return await response.Content.ReadFromJsonAsync<RegisterResult>();
+        }
     }
 }

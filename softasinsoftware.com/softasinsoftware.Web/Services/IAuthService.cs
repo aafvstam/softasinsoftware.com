@@ -6,6 +6,7 @@ namespace softasinsoftware.Web.Services
     {
         Task<LoginResult> Login(LoginModel loginModel);
         Task Logout();
+        Task<RegisterResult> InitDb();
         Task<RegisterResult> Register(RegisterModel registerModel);
     }
 }
