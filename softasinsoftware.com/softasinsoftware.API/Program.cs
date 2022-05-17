@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -68,7 +69,7 @@ builder.Services.AddSingleton<IYouTubeVideosService, YouTubeVideosService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
@@ -139,7 +140,7 @@ app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.Gea
 //    return Results.Ok();
 //});
 
-app.MapGet("/usercount", (UserManager<IdentityUser> userMgr) =>
+app.MapGet("/usercount", [AllowAnonymous] (UserManager<IdentityUser> userMgr) =>
 {
     int usercount = -1;
     try
@@ -154,7 +155,7 @@ app.MapGet("/usercount", (UserManager<IdentityUser> userMgr) =>
     return Results.Ok(usercount);
 });
 
-app.MapGet("/register-admin", async (UserManager<IdentityUser> userMgr) =>
+app.MapGet("/register-admin", [AllowAnonymous] async (UserManager<IdentityUser> userMgr) =>
 {
     try
     {
