@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -69,7 +68,7 @@ builder.Services.AddSingleton<IYouTubeVideosService, YouTubeVideosService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-// if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
@@ -110,8 +109,6 @@ app.MapPost("/gear", async (ApplicationDbContext db, GearItem gear) =>
 
 app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.GearList.FindAsync(id));
 
-
-
 //app.MapPut("/gear/{id}", async (ApplicationDbContext db, GearItem updategear, int id) =>
 //{
 //    var gear = await db.GearList.FindAsync(id);
@@ -140,50 +137,50 @@ app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.Gea
 //    return Results.Ok();
 //});
 
-app.MapGet("/usercount", [AllowAnonymous] (UserManager<IdentityUser> userMgr) =>
-{
-    int usercount = -1;
-    try
-    {
-        usercount = userMgr.Users.Count();
-    }
-    catch (Exception exception)
-    {
-        return Results.BadRequest(exception.Message);
-    }
+//app.MapGet("/usercount", [AllowAnonymous] (UserManager<IdentityUser> userMgr) =>
+//{
+//    int usercount = -1;
+//    try
+//    {
+//        usercount = userMgr.Users.Count();
+//    }
+//    catch (Exception exception)
+//    {
+//        return Results.BadRequest(exception.Message);
+//    }
 
-    return Results.Ok(usercount);
-});
+//    return Results.Ok(usercount);
+//});
 
-app.MapGet("/register-admin", [AllowAnonymous] async (UserManager<IdentityUser> userMgr) =>
-{
-    try
-    {
-        // Todo: Get from Azure Vault
-        string username = builder.Configuration["Authentication:InitialUser"];
-        string password = builder.Configuration["Authentication:InitialSecret"];
+//app.MapGet("/register-admin", [AllowAnonymous] async (UserManager<IdentityUser> userMgr) =>
+//{
+//    try
+//    {
+//        // Todo: Get from Azure Vault
+//        string username = builder.Configuration["Authentication:InitialUser"];
+//        string password = builder.Configuration["Authentication:InitialSecret"];
 
-        // register admin
-        var newUser = new IdentityUser
-        {
-            UserName = username,
-            Email = username
-        };
+//        // register admin
+//        var newUser = new IdentityUser
+//        {
+//            UserName = username,
+//            Email = username
+//        };
 
-        var result = await userMgr.CreateAsync(newUser, password);
+//        var result = await userMgr.CreateAsync(newUser, password);
 
-        if (!result.Succeeded)
-        {
-            var errors = result.Errors.Select(x => x.Description);
-        }
+//        if (!result.Succeeded)
+//        {
+//            var errors = result.Errors.Select(x => x.Description);
+//        }
 
-        return Results.Ok(new LoginModel { Email = username, Password = password });
-    }
-    catch (Exception exception)
-    {
-        return Results.BadRequest(exception.Message);
-    }
-});
+//        return Results.Ok(new LoginModel { Email = username, Password = password });
+//    }
+//    catch (Exception exception)
+//    {
+//        return Results.BadRequest(exception.Message);
+//    }
+//});
 
 //app.MapPost("/accounts", async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
 //{
