@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 
+using softasinsoftware.Shared.Models;
+
 using System.Text.Json;
 
 namespace softasinsoftware.Web.Pages
@@ -11,6 +13,8 @@ namespace softasinsoftware.Web.Pages
         public IHttpClientFactory? ClientFactory { get; private set; }
 
         public int UserCount { get; private set; }
+        public string UserID { get; private set; } = string.Empty;
+        public string UserSecret { get; private set; } = string.Empty;
 
         protected override async Task OnInitializedAsync()
         {
@@ -53,6 +57,18 @@ namespace softasinsoftware.Web.Pages
 
             if (response.IsSuccessStatusCode)
             {
+                using var responseStream = await response.Content.ReadAsStreamAsync();
+
+                if (responseStream != null)
+                {
+                    var options = new JsonSerializerOptions()
+                    {
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                    };
+
+                    LoginModel loginmodel = await JsonSerializer.DeserializeAsync<LoginModel>(responseStream, options);
+                }
+
                 await GetUserCount();
             }
         }

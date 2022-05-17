@@ -139,7 +139,7 @@ app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.Gea
 //    return Results.Ok();
 //});
 
-app.MapGet("/usercount", async (UserManager<IdentityUser> userMgr) =>
+app.MapGet("/usercount", (UserManager<IdentityUser> userMgr) =>
 {
     int usercount = -1;
     try
@@ -158,27 +158,30 @@ app.MapGet("/register-admin", async (UserManager<IdentityUser> userMgr) =>
 {
     try
     {
+        // Todo: Get from Azure Vault
+        string username = builder.Configuration["Authentication:InitialUser"];
+        string password = builder.Configuration["Authentication:InitialSecret"];
+
         // register admin
         var newUser = new IdentityUser
         {
-            // Get from Azure Vault
-            UserName = builder.Configuration["Authentication:InitialUser"],
-            Email = builder.Configuration["Authentication:InitialUser"]
+            UserName = username,
+            Email = username
         };
 
-        var result = await userMgr.CreateAsync(newUser, builder.Configuration["Authentication:InitialSecret"]);
+        var result = await userMgr.CreateAsync(newUser, password);
 
         if (!result.Succeeded)
         {
             var errors = result.Errors.Select(x => x.Description);
         }
+
+        return Results.Ok(new LoginModel { Email = username, Password = password });
     }
     catch (Exception exception)
     {
         return Results.BadRequest(exception.Message);
     }
-
-    return Results.Ok();
 });
 
 //app.MapPost("/accounts", async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
