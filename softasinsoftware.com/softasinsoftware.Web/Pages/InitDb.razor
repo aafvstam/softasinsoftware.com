@@ -1,3 +1,15 @@
 ﻿@page "/initdb"
 
 <h1 class="col-md-12 text-center">Initialize Database</h1>
+<p class="col-md-12 text-center">There are currently @UserCount user(s) in the database</p>
+
+@if (UserCount > 0)
+{
+    <p class="col-md-12 text-center">No need to initialize the database</p>
+}
+else
+{
+    <button @onclick="InitializeDb">
+        Initialize Db
+    </button>
+}

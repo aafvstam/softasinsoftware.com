@@ -10,6 +10,8 @@ using softasinsoftware.API.Extensions.Microsoft.Extensions;
 using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -107,6 +109,8 @@ app.MapPost("/gear", async (ApplicationDbContext db, GearItem gear) =>
 
 app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.GearList.FindAsync(id));
 
+
+
 //app.MapPut("/gear/{id}", async (ApplicationDbContext db, GearItem updategear, int id) =>
 //{
 //    var gear = await db.GearList.FindAsync(id);
@@ -135,27 +139,47 @@ app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.Gea
 //    return Results.Ok();
 //});
 
-//app.MapGet("/register-admin", async (UserManager<IdentityUser> userMgr) =>
-//{
-//    // register admin
-//    var newUser = new IdentityUser
-//    {
-//        // Get from Azure Vault
-//        UserName = builder.Configuration["Authentication:InitialUser"],
-//        Email = builder.Configuration["Authentication:InitialUser"]
-//    };
+app.MapGet("/usercount", async (UserManager<IdentityUser> userMgr) =>
+{
+    int usercount = -1;
+    try
+    {
+        usercount = userMgr.Users.Count();
+    }
+    catch (Exception exception)
+    {
+        return Results.BadRequest(exception.Message);
+    }
 
-//    var result = await userMgr.CreateAsync(newUser, builder.Configuration["Authentication:InitialSecret"]);
+    return Results.Ok(usercount);
+});
 
-//    if (!result.Succeeded)
-//    {
-//        var errors = result.Errors.Select(x => x.Description);
+app.MapGet("/register-admin", async (UserManager<IdentityUser> userMgr) =>
+{
+    try
+    {
+        // register admin
+        var newUser = new IdentityUser
+        {
+            // Get from Azure Vault
+            UserName = builder.Configuration["Authentication:InitialUser"],
+            Email = builder.Configuration["Authentication:InitialUser"]
+        };
 
-//        return Results.Ok(new RegisterResult { Successful = false, Errors = errors });
-//    }
+        var result = await userMgr.CreateAsync(newUser, builder.Configuration["Authentication:InitialSecret"]);
 
-//    return Results.Ok(new RegisterResult { Successful = true });
-//});
+        if (!result.Succeeded)
+        {
+            var errors = result.Errors.Select(x => x.Description);
+        }
+    }
+    catch (Exception exception)
+    {
+        return Results.BadRequest(exception.Message);
+    }
+
+    return Results.Ok();
+});
 
 //app.MapPost("/accounts", async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
 //{
@@ -178,31 +202,31 @@ app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.Gea
 //    return Results.Ok(new RegisterResult { Successful = true });
 //});
 
-//app.MapPost("/login", async (SignInManager<IdentityUser> signInManager, LoginModel login) =>
-//{
-//    var result = await signInManager.PasswordSignInAsync(login.Email, login.Password, false, false);
+app.MapPost("/login", async (SignInManager<IdentityUser> signInManager, LoginModel login) =>
+{
+    var result = await signInManager.PasswordSignInAsync(login.Email, login.Password, false, false);
 
-//    if (!result.Succeeded) return Results.BadRequest(new LoginResult { Successful = false, Error = "Username and password are invalid." });
+    if (!result.Succeeded) return Results.BadRequest(new LoginResult { Successful = false, Error = "Username and password are invalid." });
 
-//    var claims = new[]
-//    {
-//        new Claim(ClaimTypes.Name, login.Email)
-//    };
+    var claims = new[]
+    {
+        new Claim(ClaimTypes.Name, login.Email)
+    };
 
-//    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:JwtSecurityKey"]));
-//    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-//    var expiry = DateTime.Now.AddDays(Convert.ToInt32(builder.Configuration["Authentication:JwtExpiryInDays"]));
+    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:JwtSecurityKey"]));
+    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+    var expiry = DateTime.Now.AddDays(Convert.ToInt32(builder.Configuration["Authentication:JwtExpiryInDays"]));
 
-//    var token = new JwtSecurityToken(
-//        builder.Configuration["Authentication:JwtIssuer"],
-//        builder.Configuration["Authentication:JwtAudience"],
-//        claims,
-//        expires: expiry,
-//        signingCredentials: creds
-//    );
+    var token = new JwtSecurityToken(
+        builder.Configuration["Authentication:JwtIssuer"],
+        builder.Configuration["Authentication:JwtAudience"],
+        claims,
+        expires: expiry,
+        signingCredentials: creds
+    );
 
-//    return Results.Ok(new LoginResult { Successful = true, Token = new JwtSecurityTokenHandler().WriteToken(token) });
-//});
+    return Results.Ok(new LoginResult { Successful = true, Token = new JwtSecurityTokenHandler().WriteToken(token) });
+});
 
 app.CreateDbIfNotExists();
 
