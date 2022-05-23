@@ -81,6 +81,7 @@ namespace softasinsoftware.Web.Pages
                 }
 
                 await GetUserCount();
+                StateHasChanged();
             }
         }
     }
