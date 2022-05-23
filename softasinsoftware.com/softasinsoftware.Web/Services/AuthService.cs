@@ -59,7 +59,7 @@ namespace softasinsoftware.Web.Services
         }
         public async Task<RegisterResult> InitDb()
         {
-            var response = await _httpClient.GetAsync("register-admin");
+            var response = await _httpClient.PostAsync("register-admin", null);
             return await response.Content.ReadFromJsonAsync<RegisterResult>();
         }
     }

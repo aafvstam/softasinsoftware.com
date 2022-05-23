@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -137,71 +138,73 @@ app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.Gea
 //    return Results.Ok();
 //});
 
-//app.MapGet("/usercount", [AllowAnonymous] (UserManager<IdentityUser> userMgr) =>
-//{
-//    int usercount = -1;
-//    try
-//    {
-//        usercount = userMgr.Users.Count();
-//    }
-//    catch (Exception exception)
-//    {
-//        return Results.BadRequest(exception.Message);
-//    }
+app.MapGet("/usercount", [AllowAnonymous] (UserManager<IdentityUser> userMgr) =>
+{
+    int usercount = -1;
+    try
+    {
+        usercount = userMgr.Users.Count();
+    }
+    catch (Exception exception)
+    {
+        return Results.BadRequest(exception.Message);
+    }
 
-//    return Results.Ok(usercount);
-//});
+    return Results.Ok(usercount);
+});
 
-//app.MapGet("/register-admin", [AllowAnonymous] async (UserManager<IdentityUser> userMgr) =>
-//{
-//    try
-//    {
-//        // Todo: Get from Azure Vault
-//        string username = builder.Configuration["Authentication:InitialUser"];
-//        string password = builder.Configuration["Authentication:InitialSecret"];
+app.MapPost("/register-admin", [AllowAnonymous] async (UserManager<IdentityUser> userMgr) =>
+{
+    try
+    {
+        // Todo: Get from Azure Vault
+        string username = builder.Configuration["Authentication:InitialUser"];
+        string password = builder.Configuration["Authentication:InitialSecret"];
 
-//        // register admin
-//        var newUser = new IdentityUser
-//        {
-//            UserName = username,
-//            Email = username
-//        };
+        // register admin
+        var newUser = new IdentityUser
+        {
+            UserName = username,
+            Email = username
+        };
 
-//        var result = await userMgr.CreateAsync(newUser, password);
+        var result = await userMgr.CreateAsync(newUser, password);
 
-//        if (!result.Succeeded)
-//        {
-//            var errors = result.Errors.Select(x => x.Description);
-//        }
+        if (!result.Succeeded)
+        {
+            var errors = result.Errors.Select(x => x.Description);
+            return Results.Ok(new RegisterResult { Successful = false, Errors = errors });
+        }
 
-//        return Results.Ok(new LoginModel { Email = username, Password = password });
-//    }
-//    catch (Exception exception)
-//    {
-//        return Results.BadRequest(exception.Message);
-//    }
-//});
+        return Results.Ok(new RegisterResult { Successful = true });
 
-//app.MapPost("/accounts", async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
-//{
-//    var newUser = new IdentityUser
-//    {
-//        UserName = model.Email,
-//        Email = model.Email
-//    };
+    }
+    catch (Exception exception)
+    {
+        return Results.BadRequest(exception.Message);
+    }
+});
 
-//    var result = await userMgr.CreateAsync(newUser, model.Password);
+app.MapPost("/accounts", async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
+{
+    var newUser = new IdentityUser
+    {
+        UserName = model.Email,
+        Email = model.Email
+    };
 
-//    if (!result.Succeeded)
-//    {
-//        var errors = result.Errors.Select(x => x.Description);
+    var result = await userMgr.CreateAsync(newUser, model.Password);
 
-//        return Results.Ok(new RegisterResult { Successful = false, Errors = errors });
+    if (!result.Succeeded)
+    {
+        var errors = result.Errors.Select(x => x.Description);
 
-//    }
+        return Results.Ok(new RegisterResult { Successful = false, Errors = errors });
 
-//    return Results.Ok(new RegisterResult { Successful = true });
-//});
+    }
+
+    return Results.Ok(new RegisterResult { Successful = true });
+});
 
 app.MapPost("/login", async (SignInManager<IdentityUser> signInManager, LoginModel login) =>
 {
