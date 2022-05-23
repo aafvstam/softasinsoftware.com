@@ -81,7 +81,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors();
 
-app.MapGet("/youtubeplaylistvideos", async (IYouTubeVideosService youtubeservice) =>
+app.MapGet("/youtubeplaylistvideos", [AllowAnonymous] async (IYouTubeVideosService youtubeservice) =>
 {
     try
     {
@@ -98,10 +98,10 @@ app.MapGet("/youtubeplaylistvideos", async (IYouTubeVideosService youtubeservice
 }).Produces<YouTubeVideoList>();
 
 //Get all Gear Items in a List
-app.MapGet("/gearlist", async (ApplicationDbContext db) => await db.GearList.AsNoTracking().ToListAsync());
+app.MapGet("/gearlist", [AllowAnonymous] async (ApplicationDbContext db) => await db.GearList.AsNoTracking().ToListAsync());
 
 // Add a Gear Item to the List
-app.MapPost("/gear", async (ApplicationDbContext db, GearItem gear) =>
+app.MapPost("/gear", [Authorize] async (ApplicationDbContext db, GearItem gear) =>
 {
     await db.GearList.AddAsync(gear);
     await db.SaveChangesAsync();
@@ -110,7 +110,7 @@ app.MapPost("/gear", async (ApplicationDbContext db, GearItem gear) =>
 
 app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.GearList.FindAsync(id));
 
-//app.MapPut("/gear/{id}", async (ApplicationDbContext db, GearItem updategear, int id) =>
+//app.MapPut("/gear/{id}", [Authorize] async (ApplicationDbContext db, GearItem updategear, int id) =>
 //{
 //    var gear = await db.GearList.FindAsync(id);
 
@@ -123,7 +123,7 @@ app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.Gea
 //    return Results.NoContent();
 //});
 
-//app.MapDelete("/gear/{id}", async (ApplicationDbContext db, int id) =>
+//app.MapDelete("/gear/{id}", [Authorize] async (ApplicationDbContext db, int id) =>
 //{
 //    var gear = await db.GearList.FindAsync(id);
 
@@ -185,7 +185,7 @@ app.MapPost("/register-admin", [AllowAnonymous] async (UserManager<IdentityUser>
     }
 });
 
-app.MapPost("/accounts", async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
+app.MapPost("/accounts", [Authorize] async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
 {
     var newUser = new IdentityUser
     {
@@ -206,7 +206,7 @@ app.MapPost("/accounts", async (UserManager<IdentityUser> userMgr, RegisterModel
     return Results.Ok(new RegisterResult { Successful = true });
 });
 
-app.MapPost("/login", async (SignInManager<IdentityUser> signInManager, LoginModel login) =>
+app.MapPost("/login", [AllowAnonymous] async (SignInManager<IdentityUser> signInManager, LoginModel login) =>
 {
     var result = await signInManager.PasswordSignInAsync(login.Email, login.Password, false, false);
 
