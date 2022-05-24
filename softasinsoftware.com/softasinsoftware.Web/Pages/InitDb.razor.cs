@@ -12,6 +12,9 @@ namespace softasinsoftware.Web.Pages
         [Inject]
         public IHttpClientFactory? ClientFactory { get; private set; }
 
+        [Inject]
+        NavigationManager NavigationManager { get; set; }
+
         private bool ShowErrors;
         private IEnumerable<string> Errors;
 
@@ -77,11 +80,13 @@ namespace softasinsoftware.Web.Pages
                     {
                         Errors = result.Errors;
                         ShowErrors = true;
+                        StateHasChanged();
+                    }
+                    else
+                    {
+                        NavigationManager.NavigateTo("/initdb", true);
                     }
                 }
-
-                await GetUserCount();
-                StateHasChanged();
             }
         }
     }
