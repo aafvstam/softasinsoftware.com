@@ -1,0 +1,48 @@
+﻿@using softasinsoftware.Shared.Extensions.System
+@using softasinsoftware.Shared.Models
+
+<div class="card text-center neumorphism mt-3">
+    <div class="card-header">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h5 class="card-title text-center">@GearItem.Name?.Truncate(25)</h5>
+                </div>
+            </div>
+        </div>
+
+        <AuthorizeView>
+            <Authorized>
+                <div class="row">
+                    <div class="col text-center">
+                        <a href='/gear/edit/@GearItem.Id' class="btn btn-outline-dark" role="button">
+                            Edit
+                        </a>
+                        <a href='/gear/delete/@GearItem.Id' class="btn btn-outline-danger" role="button">
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            </Authorized>
+            <Authorizing>
+                <h1>Authentication in progress</h1>
+            </Authorizing>
+        </AuthorizeView>
+    </div>
+
+    <div class="card-body">
+        <img class="w-auto m-3" src="/images/@GearItem.Image" alt="@GearItem.Name" height="100">
+        <p class="card-text text-small">@GearItem.Description?.Truncate(150)</p>
+    </div>
+    <div class="card-footer text-muted">
+        <a href="@GearItem.URL" class="btn btn-primary" target="_blank">
+            Info Amazon <span class="oi oi-external-link" aria-hidden="true"></span>
+        </a>
+        @if (string.IsNullOrEmpty(GearItem.URLAmazonNL) == false)
+        {
+            <a href="@GearItem.URLAmazonNL" class="btn btn-primary ml-1" target="_blank">
+                Info Amazon NL <span class="oi oi-external-link" aria-hidden="true"></span>
+            </a>
+        }
+    </div>
+</div>

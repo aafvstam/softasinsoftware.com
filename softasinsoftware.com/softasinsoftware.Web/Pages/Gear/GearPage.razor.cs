@@ -1,15 +1,15 @@
-﻿using System.Text.Json;
-
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 
 using softasinsoftware.Shared.Models;
 
-namespace softasinsoftware.Web.Pages
+using System.Text.Json;
+
+namespace softasinsoftware.Web.Pages.Gear
 {
     public partial class GearPage
     {
         public List<GearItem>? GearList { get; private set; }
-        
+
         [Inject]
         public IHttpClientFactory? ClientFactory { get; private set; }
 

@@ -1,0 +1,43 @@
+﻿@page "/gear/gear"
+
+<div class="container">
+    <div class="row text-center">
+        <h1 class="col-md-12">Gear I Use</h1>
+        <p class="col-md-12">This page will list all my used gear items to make this stream happen</p>
+    </div>
+
+    <AuthorizeView>
+        <Authorized>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a href='/gear/add' class="btn btn-primary" role="button">
+                        <i class="oi oi-headphones"></i>
+                        Add Gear Item
+                    </a>
+                </div>
+            </div>
+        </Authorized>
+        <Authorizing>
+            <h1>Authentication in progress</h1>
+        </Authorizing>
+    </AuthorizeView>
+    
+    @if (GearList == null || GearList.Count() == 0)
+    {
+        <p><em>Loading ... </em></p>
+    }
+    else
+    {
+        <div class="row my-4">
+            <div class="card-deck">
+                @foreach (var item in GearList)
+                {
+                    <GearCard GearItem=item />
+                }
+            </div>
+        </div>
+    }
+</div>
+
+
+

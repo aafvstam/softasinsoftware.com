@@ -1,0 +1,58 @@
+﻿@page "/gear/add"
+@page "/gear/edit/{gearId:int}"
+
+@using System.Text.Json
+
+<h3>@Title Gear Item</h3>
+<hr />
+
+<EditForm Model="@GearItem" OnValidSubmit="SaveGearItem">
+    <DataAnnotationsValidator />
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="GearItem.Name" />
+        </div>
+        <ValidationMessage For="@(() => GearItem.Name)" />
+    </div>
+    <div class="mb-3">
+        <label for="Description" class="form-label">Description</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="GearItem.Description" />
+        </div>
+        <ValidationMessage For="@(() => GearItem.Description)" />
+    </div>
+    <div class="mb-3">
+        <label for="URL" class="form-label">URL</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="GearItem.URL" />
+        </div>
+        <ValidationMessage For="@(() => GearItem.URL)" />
+    </div>
+    <div class="mb-3">
+        <label for="ShortURL" class="form-label">Short URL</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="GearItem.ShortURL" />
+        </div>
+        <ValidationMessage For="@(() => GearItem.ShortURL)" />
+    </div>
+    <div class="mb-3">
+        <label for="URLAmazonNL" class="form-label">URL NL</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="GearItem.URLAmazonNL" />
+        </div>
+        <ValidationMessage For="@(() => GearItem.URLAmazonNL)" />
+    </div>
+    <div class="mb-3">
+        <label for="ShortURLAmazonNL" class="form-label">Short URL</label>
+        <div class="col-md-4">
+            <InputText class="form-control" @bind-Value="GearItem.ShortURLAmazonNL" />
+        </div>
+        <ValidationMessage For="@(() => GearItem.ShortURLAmazonNL)" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button class="btn btn-light" @onclick="Cancel">Cancel</button>
+    </div>
+</EditForm>

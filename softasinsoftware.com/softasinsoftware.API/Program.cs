@@ -101,42 +101,49 @@ app.MapGet("/youtubeplaylistvideos", [AllowAnonymous] async (IYouTubeVideosServi
 app.MapGet("/gearlist", [AllowAnonymous] async (ApplicationDbContext db) => await db.GearList.AsNoTracking().ToListAsync());
 
 // Add a Gear Item to the List
-app.MapPost("/gear", [Authorize] async (ApplicationDbContext db, GearItem gear) =>
+app.MapPost("/gear", async (ApplicationDbContext db, GearItem gear) =>
 {
     await db.GearList.AddAsync(gear);
     await db.SaveChangesAsync();
     return Results.Created($"/gear/{gear.Id}", gear);
 });
 
+// Finding a Gear Item
 app.MapGet("/gear/{id}", async (ApplicationDbContext db, int id) => await db.GearList.FindAsync(id));
 
-//app.MapPut("/gear/{id}", [Authorize] async (ApplicationDbContext db, GearItem updategear, int id) =>
-//{
-//    var gear = await db.GearList.FindAsync(id);
+// Update a Gear Item
+app.MapPut("/gear/{id}", async (ApplicationDbContext db, GearItem updategear) =>
+{
+    var gear = await db.GearList.FindAsync(updategear.Id);
 
-//    if (gear is null) return Results.NotFound();
+    if (gear is null) return Results.NotFound();
 
-//    gear.Name = updategear.Name;
-//    gear.Description = updategear.Description;
+    gear.Name = updategear.Name;
+    gear.Description = updategear.Description;
+    gear.Image = updategear.Image;
+    gear.URL = updategear.URL;
+    gear.ShortURL = updategear.ShortURL;
+    gear.URLAmazonNL = updategear.URLAmazonNL;
+    gear.ShortURLAmazonNL = updategear.ShortURLAmazonNL;
 
-//    await db.SaveChangesAsync();
-//    return Results.NoContent();
-//});
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
 
-//app.MapDelete("/gear/{id}", [Authorize] async (ApplicationDbContext db, int id) =>
-//{
-//    var gear = await db.GearList.FindAsync(id);
+app.MapDelete("/gear/{id}", async (ApplicationDbContext db, int id) =>
+{
+    var gear = await db.GearList.FindAsync(id);
 
-//    if (gear is null)
-//    {
-//        return Results.NotFound();
-//    }
+    if (gear is null)
+    {
+        return Results.NotFound();
+    }
 
-//    db.GearList.Remove(gear);
+    db.GearList.Remove(gear);
 
-//    await db.SaveChangesAsync();
-//    return Results.Ok();
-//});
+    await db.SaveChangesAsync();
+    return Results.Ok();
+});
 
 app.MapGet("/usercount", [AllowAnonymous] (UserManager<IdentityUser> userMgr) =>
 {
