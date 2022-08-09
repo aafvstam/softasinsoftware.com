@@ -9,7 +9,7 @@ namespace softasinsoftware.Web.Pages.Gear
     partial class Delete
     {
         [Parameter]
-        public int gearId { get; set; }
+        public int GearId { get; set; }
 
         public GearItem GearItem { get; set; } = new();
 
@@ -28,7 +28,7 @@ namespace softasinsoftware.Web.Pages.Gear
 
             var client = ClientFactory.CreateClient("softasinsoftware.API");
 
-            HttpResponseMessage response = await client.GetAsync("gear/" + Convert.ToInt32(gearId));
+            HttpResponseMessage response = await client.GetAsync("gear/" + Convert.ToInt32(GearId));
 
             if (response.IsSuccessStatusCode)
             {
@@ -51,7 +51,7 @@ namespace softasinsoftware.Web.Pages.Gear
             }
         }
 
-        protected async Task RemoveGearItem(int userID)
+        protected async Task RemoveGearItem(int GearId)
         {
             if (ClientFactory == null)
             {
@@ -60,7 +60,7 @@ namespace softasinsoftware.Web.Pages.Gear
 
             var client = ClientFactory.CreateClient("softasinsoftware.API");
 
-            HttpResponseMessage response = await client.DeleteAsync("gear/" + Convert.ToInt32(gearId));
+            HttpResponseMessage response = await client.DeleteAsync("gear/" + Convert.ToInt32(GearId));
 
             if (response.IsSuccessStatusCode)
             {

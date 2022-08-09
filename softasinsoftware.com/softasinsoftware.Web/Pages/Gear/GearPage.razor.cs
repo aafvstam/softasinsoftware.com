@@ -9,6 +9,7 @@ namespace softasinsoftware.Web.Pages.Gear
     public partial class GearPage
     {
         public List<GearItem>? GearList { get; private set; }
+        public string? ImageBaseAddress = string.Empty;
 
         [Inject]
         public IHttpClientFactory? ClientFactory { get; private set; }
@@ -21,6 +22,7 @@ namespace softasinsoftware.Web.Pages.Gear
             }
 
             var client = ClientFactory.CreateClient("softasinsoftware.API");
+            this.ImageBaseAddress = client.BaseAddress.ToString();
 
             HttpResponseMessage response = await client.GetAsync("gearlist");
 

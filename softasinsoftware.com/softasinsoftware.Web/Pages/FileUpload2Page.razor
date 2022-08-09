@@ -1,0 +1,75 @@
+﻿@page "/fileupload2"
+
+<h3>Upload Files</h3>
+
+<p>
+    <label>
+        Max file size:
+        <input type="number" @bind="maxFileSize" />
+    </label>
+</p>
+
+<p>
+    <label>
+        Max allowed files:
+        <input type="number" @bind="maxAllowedFiles" />
+    </label>
+</p>
+
+<p>
+    <label>
+        Upload up to @maxAllowedFiles of up to @maxFileSize bytes:
+        <InputFile OnChange="@OnInputFileChange" multiple />
+    </label>
+</p>
+
+@if (isLoading)
+{
+    <div class="row">
+        <div class="text-center">
+            <div class="spinner"></div>
+        </div>
+    </div>
+}
+else
+{
+    @if (loadedFiles.Count > 0)
+    {
+        <div class="card">
+            <div class="card-body">
+                @foreach (var file in loadedFiles)
+                {
+                    <div>
+                        <div>
+                            API Base Address: @baseaddress
+                        </div>
+                        <div>
+                            File: @file.Name
+                        </div>
+                        <br>
+                        @if (FileUpload(uploadResults, file.Name, out var result))
+                        {
+                            imagesource = baseaddress + "imagedownload/" + result.FileNameStored;
+                            <div>
+                                Stored File Name: @result.FileNameStored
+                            </div>
+                            <div>
+                                Image Source: @imagesource
+                            </div>
+                            <div>
+                                <img src="@imagesource" width="200">
+                            </div>
+                        }
+                        else
+                        {
+                            <span>
+                                There was an error uploading the file
+                                (Error: @result.ErrorCode).
+                            </span>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}

@@ -6,53 +6,121 @@
 <h3>@Title Gear Item</h3>
 <hr />
 
-<EditForm Model="@GearItem" OnValidSubmit="SaveGearItem">
-    <DataAnnotationsValidator />
-    <div class="mb-3">
-        <label for="Name" class="form-label">Name</label>
-        <div class="col-md-4">
-            <InputText class="form-control" @bind-Value="GearItem.Name" />
+<div class="row">
+    <div class="col-5">
+        <div class="row justify-content-center my-3">
+            <img src="@imagesource" width="200">
         </div>
-        <ValidationMessage For="@(() => GearItem.Name)" />
-    </div>
-    <div class="mb-3">
-        <label for="Description" class="form-label">Description</label>
-        <div class="col-md-4">
-            <InputText class="form-control" @bind-Value="GearItem.Description" />
-        </div>
-        <ValidationMessage For="@(() => GearItem.Description)" />
-    </div>
-    <div class="mb-3">
-        <label for="URL" class="form-label">URL</label>
-        <div class="col-md-4">
-            <InputText class="form-control" @bind-Value="GearItem.URL" />
-        </div>
-        <ValidationMessage For="@(() => GearItem.URL)" />
-    </div>
-    <div class="mb-3">
-        <label for="ShortURL" class="form-label">Short URL</label>
-        <div class="col-md-4">
-            <InputText class="form-control" @bind-Value="GearItem.ShortURL" />
-        </div>
-        <ValidationMessage For="@(() => GearItem.ShortURL)" />
-    </div>
-    <div class="mb-3">
-        <label for="URLAmazonNL" class="form-label">URL NL</label>
-        <div class="col-md-4">
-            <InputText class="form-control" @bind-Value="GearItem.URLAmazonNL" />
-        </div>
-        <ValidationMessage For="@(() => GearItem.URLAmazonNL)" />
-    </div>
-    <div class="mb-3">
-        <label for="ShortURLAmazonNL" class="form-label">Short URL</label>
-        <div class="col-md-4">
-            <InputText class="form-control" @bind-Value="GearItem.ShortURLAmazonNL" />
-        </div>
-        <ValidationMessage For="@(() => GearItem.ShortURLAmazonNL)" />
-    </div>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button class="btn btn-light" @onclick="Cancel">Cancel</button>
+        @if (isLoading)
+        {
+            <div class="row">
+                <div class="text-center">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        }
+        else
+        {
+            @if (loadedFiles.Count > 0)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        @foreach (var file in loadedFiles)
+                        {
+                            <div>
+                                <div>
+                                    API Base Address: @baseaddress
+                                </div>
+                                <div>
+                                    File: @file.Name
+                                </div>
+                                <br>
+                                @if (FileUpload(uploadResults, file.Name, out var result))
+                                {
+                                    imagesource = baseaddress + "imagedownload/" + result.FileNameStored;
+                                    <div>
+                                        Stored File Name: @result.FileNameStored
+                                    </div>
+                                    <div>
+                                        Image Source: @imagesource
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span>
+                                        There was an error uploading the file
+                                        (Error: @result.ErrorCode).
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        <div class="row justify-content-center mt-3">
+            <InputFile OnChange="@OnInputFileChange" />
+        </div>
     </div>
-</EditForm>
+    <div class="col-7">
+        <EditForm Model="@GearItem" OnValidSubmit="SaveGearItem">
+            <DataAnnotationsValidator />
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name</label>
+                <div class="col-md-10">
+                    <InputText class="form-control" @bind-Value="GearItem.Name" />
+                </div>
+                <ValidationMessage For="@(() => GearItem.Name)" />
+            </div>
+            <div class="mb-3">
+                <label for="Description" class="form-label">Description</label>
+                <div class="col-md-10">
+                    <InputText class="form-control" @bind-Value="GearItem.Description" />
+                </div>
+                <ValidationMessage For="@(() => GearItem.Description)" />
+            </div>
+            <div class="mb-3">
+                <label for="URL" class="form-label">URL</label>
+                <div class="col-md-10">
+                    <InputText class="form-control" @bind-Value="GearItem.URL" />
+                </div>
+                <ValidationMessage For="@(() => GearItem.URL)" />
+            </div>
+            <div class="mb-3">
+                <label for="ShortURL" class="form-label">Short URL</label>
+                <div class="col-md-10">
+                    <InputText class="form-control" @bind-Value="GearItem.ShortURL" />
+                </div>
+                <ValidationMessage For="@(() => GearItem.ShortURL)" />
+            </div>
+            <div class="mb-3">
+                <label for="URLAmazonNL" class="form-label">URL NL</label>
+                <div class="col-md-10">
+                    <InputText class="form-control" @bind-Value="GearItem.URLAmazonNL" />
+                </div>
+                <ValidationMessage For="@(() => GearItem.URLAmazonNL)" />
+            </div>
+            <div class="mb-3">
+                <label for="ShortURLAmazonNL" class="form-label">Short URL</label>
+                <div class="col-md-10">
+                    <InputText class="form-control" @bind-Value="GearItem.ShortURLAmazonNL" />
+                </div>
+                <ValidationMessage For="@(() => GearItem.ShortURLAmazonNL)" />
+            </div>
+
+            <div class="mb-3">
+                <label for="Image" class="form-label">Image</label>
+                <div class="col-md-10">
+                    <InputText class="form-control" @bind-Value="GearItem.Image" />
+                </div>
+                <ValidationMessage For="@(() => GearItem.Image)" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button class="btn btn-light" @onclick="Cancel">Cancel</button>
+            </div>
+        </EditForm>
+    </div>
+</div>

@@ -12,6 +12,7 @@ using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 
@@ -164,7 +165,7 @@ app.MapPost("/register-admin", [AllowAnonymous] async (UserManager<IdentityUser>
 {
     try
     {
-        // Todo: Get from Azure Vault
+        //TODO: Get from Azure Vault
         string username = builder.Configuration["Authentication:InitialUser"];
         string password = builder.Configuration["Authentication:InitialSecret"];
 
@@ -192,7 +193,7 @@ app.MapPost("/register-admin", [AllowAnonymous] async (UserManager<IdentityUser>
     }
 });
 
-app.MapPost("/accounts", [Authorize] async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
+app.MapPost("/accounts", async (UserManager<IdentityUser> userMgr, RegisterModel model) =>
 {
     var newUser = new IdentityUser
     {
@@ -238,6 +239,130 @@ app.MapPost("/login", [AllowAnonymous] async (SignInManager<IdentityUser> signIn
 
     return Results.Ok(new LoginResult { Successful = true, Token = new JwtSecurityTokenHandler().WriteToken(token) });
 });
+
+
+app.MapGet("/imagedownload/{filename}", (string filename) =>
+{
+    string path = Path.Combine(app.Environment.ContentRootPath,
+                           app.Environment.EnvironmentName,
+                           "unsafe_uploads",
+                           filename);
+
+    var mimeType = "image/png";
+    return Results.File(path, contentType: mimeType);
+});
+
+app.MapPost("/filesave", async (HttpRequest request) =>
+{
+    try
+    {
+        int maxAllowedFiles = 3;
+        long maxFileSize = 1024 * 1024 * 15;
+
+        if (!request.HasFormContentType)
+        {
+            return Results.BadRequest();
+        }
+
+        var form = await request.ReadFormAsync();
+
+        Uri? resourcePath = new Uri($"{request.Scheme}://{request.Host}/");
+
+        List<UploadResult> uploadResults = new();
+
+        bool uploaded = false;
+
+        int errorCode = 0;
+        int filesProcessed = 0;
+
+        string filenameTrustedForStorage = string.Empty;
+        string filenameUntrusted = string.Empty;
+        string filenameTrustedForDisplay = string.Empty;
+
+        foreach (var file in form.Files)
+        {
+            UploadResult result = new();
+
+            // Reset Uploadstate
+            filenameTrustedForStorage = string.Empty;
+            uploaded = false;
+            errorCode = 0;
+
+            filenameUntrusted = file.FileName;
+            filenameTrustedForDisplay = WebUtility.HtmlEncode(filenameUntrusted);
+
+            if (filesProcessed < maxAllowedFiles)
+            {
+                long fileLength = file.Length;
+                if (fileLength == 0)
+                {
+                    errorCode = 1;
+                    Console.WriteLine($"'{filenameTrustedForDisplay}' length is 0 (Err: {errorCode})");
+                }
+                else if (fileLength > maxFileSize)
+                {
+                    errorCode = 2;
+                    Console.WriteLine($"'{filenameTrustedForDisplay}' of {fileLength} bytes is larger than the limit of {maxFileSize} bytes (Err: {errorCode})");
+                }
+                else
+                {
+                    filenameTrustedForStorage = Path.GetRandomFileName();
+
+                    string path = Path.Combine(app.Environment.ContentRootPath,
+                                               app.Environment.EnvironmentName,
+                                               "unsafe_uploads",
+                                               filenameTrustedForStorage);
+
+                    try
+                    {
+                        await using (FileStream stream = new FileStream(path, FileMode.Create))
+                            await file.CopyToAsync(stream);
+
+                        Console.WriteLine($"'{filenameUntrusted}' saved at {path}");
+                        uploaded = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        errorCode = 3;
+                        Console.WriteLine($"'{filenameTrustedForDisplay}' error on upload (Err: {errorCode}): {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                errorCode = 4;
+                Console.WriteLine($"'{filenameTrustedForDisplay}' not uploaded because the request exceeded the allowed {maxAllowedFiles} of files (Err: {errorCode})");
+            }
+
+            result.FileNameOriginal = filenameUntrusted;
+            result.FileNameStored = filenameTrustedForStorage;
+            result.Uploaded = uploaded;
+            result.ErrorCode = errorCode;
+
+            uploadResults.Add(result);
+
+            filesProcessed++;
+        }
+
+        return Results.Ok(uploadResults);
+    }
+    catch (Exception exception)
+    {
+        return Results.BadRequest(exception.Message);
+    }
+});
+
+string path = Path.Combine(app.Environment.ContentRootPath, app.Environment.EnvironmentName, "unsafe_uploads");
+
+//TODO: See if we can use Static Files in Minimal API projects
+
+//app.UseStaticFiles();
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(
+//        Path.Combine(Directory.GetCurrentDirectory(), path)),
+//    RequestPath = "/Files"
+//});
 
 app.CreateDbIfNotExists();
 

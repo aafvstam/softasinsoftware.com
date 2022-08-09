@@ -21,10 +21,14 @@
             <h1>Authentication in progress</h1>
         </Authorizing>
     </AuthorizeView>
-    
+
     @if (GearList == null || GearList.Count() == 0)
     {
-        <p><em>Loading ... </em></p>
+        <div class="row">
+            <div class="text-center">
+                <div class="spinner"></div>
+            </div>
+        </div>
     }
     else
     {
@@ -32,7 +36,7 @@
             <div class="card-deck">
                 @foreach (var item in GearList)
                 {
-                    <GearCard GearItem=item />
+                    <GearCard GearItem=item ImageBaseAddress=@ImageBaseAddress />
                 }
             </div>
         </div>

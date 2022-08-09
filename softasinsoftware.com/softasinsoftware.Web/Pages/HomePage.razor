@@ -7,22 +7,26 @@
 
 @if (Videos == null || Videos.YouTubeVideos == null || Videos.YouTubeVideos.Count() == 0)
 {
-	<p><em>Loading ... </em></p>
+    <div class="row">
+        <div class="text-center">
+            <div class="spinner"></div>
+        </div>
+    </div>
 }
 else
 {
-	<div class="row mt-3">
-		<div class="card-deck">
-			@foreach (var video in Videos.YouTubeVideos)
-			{
-				<YouTubeShow YouTubeVideo=video />
-			}
-		</div>
-	</div>
+    <div class="row mt-3">
+        <div class="card-deck">
+            @foreach (var video in Videos.YouTubeVideos)
+            {
+                <YouTubeShow YouTubeVideo=video />
+            }
+        </div>
+    </div>
 
-	<div class="row">
-		<div class="col-md-12 text-center my-3">
-			<a href="@Videos.MoreVideosUrl" class="btn btn-primary" target="_blank">See More Episodes</a>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-12 text-center my-3">
+            <a href="@Videos.MoreVideosUrl" class="btn btn-primary" target="_blank">See More Episodes</a>
+        </div>
+    </div>
 }

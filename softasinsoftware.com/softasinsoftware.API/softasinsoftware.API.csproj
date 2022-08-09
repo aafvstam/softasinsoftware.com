@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="Development\unsafe_uploads\" />
   </ItemGroup>
 
 </Project>
