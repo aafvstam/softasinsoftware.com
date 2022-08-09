@@ -12,6 +12,76 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Production\unsafe_uploads\Akai APC Mini.jpg" />
+    <None Remove="Production\unsafe_uploads\BehringerXENYX.jpg" />
+    <None Remove="Production\unsafe_uploads\Bose QC25.jpg" />
+    <None Remove="Production\unsafe_uploads\ComfortMouse.jpg" />
+    <None Remove="Production\unsafe_uploads\CorsairK55.jpg" />
+    <None Remove="Production\unsafe_uploads\DBX286s.jpg" />
+    <None Remove="Production\unsafe_uploads\Elgato Cam Link.jpg" />
+    <None Remove="Production\unsafe_uploads\Elgato Lights.jpg" />
+    <None Remove="Production\unsafe_uploads\Elgato Stream Deck.jpg" />
+    <None Remove="Production\unsafe_uploads\PhilipsHuePlay.jpg" />
+    <None Remove="Production\unsafe_uploads\Rode Procaster Broadcast Dynamic Vocal Microphone.jpg" />
+    <None Remove="Production\unsafe_uploads\Rode PSA1.jpg" />
+    <None Remove="Production\unsafe_uploads\RodePSM1.jpg" />
+    <None Remove="Production\unsafe_uploads\Sigma Lens.jpg" />
+    <None Remove="Production\unsafe_uploads\Sigma1850mm.jpg" />
+    <None Remove="Production\unsafe_uploads\Sony A6400.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Production\unsafe_uploads\Akai APC Mini.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\BehringerXENYX.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Bose QC25.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\ComfortMouse.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\CorsairK55.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\DBX286s.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Elgato Cam Link.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Elgato Lights.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Elgato Stream Deck.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\PhilipsHuePlay.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Rode Procaster Broadcast Dynamic Vocal Microphone.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Rode PSA1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\RodePSM1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Sigma Lens.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Sigma1850mm.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Production\unsafe_uploads\Sony A6400.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Apis.YouTube.v3" Version="1.57.0.2693" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.5" />
