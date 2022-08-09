@@ -8,9 +8,6 @@
 
 <div class="row">
     <div class="col-5">
-        <div class="row justify-content-center my-3">
-            <img src="@imagesource" width="200">
-        </div>
 
         @if (isLoading)
         {
@@ -39,11 +36,15 @@
                                 @if (FileUpload(uploadResults, file.Name, out var result))
                                 {
                                     imagesource = baseaddress + "imagedownload/" + result.FileNameStored;
+                                    GearItem.Image = @result.FileNameStored;
                                     <div>
                                         Stored File Name: @result.FileNameStored
                                     </div>
                                     <div>
                                         Image Source: @imagesource
+                                    </div>
+                                    <div class="row justify-content-center my-3">
+                                        <img src="@imagesource" width="200">
                                     </div>
                                 }
                                 else
@@ -56,6 +57,12 @@
                             </div>
                         }
                     </div>
+                </div>
+            }
+            else
+            {
+                <div class="row justify-content-center my-3">
+                    <img src="@imagesource" width="200">
                 </div>
             }
         }

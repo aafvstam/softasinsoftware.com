@@ -17,6 +17,8 @@ namespace softasinsoftware.Web.Pages.Gear
 
         public GearItem GearItem { get; set; } = new();
 
+        private string? imagesource = string.Empty;
+
         public string? ImageBaseAddress { get; set; } = string.Empty;
 
         [Inject]
@@ -37,7 +39,16 @@ namespace softasinsoftware.Web.Pages.Gear
                 }
 
                 var client = ClientFactory.CreateClient("softasinsoftware.API");
-                var imageBaseAddress = client.BaseAddress.ToString();
+
+                if (client == null)
+                {
+                    return;
+                }
+
+                if (client.BaseAddress != null)
+                {
+                    ImageBaseAddress = client.BaseAddress.ToString();
+                }
 
                 HttpResponseMessage response = await client.GetAsync("gear/" + Convert.ToInt32(gearId));
 
@@ -52,13 +63,12 @@ namespace softasinsoftware.Web.Pages.Gear
                             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                         };
 
-                        GearItem gearitem = await JsonSerializer.DeserializeAsync<GearItem>(responseStream, options);
+                        GearItem? gearitem = await JsonSerializer.DeserializeAsync<GearItem>(responseStream, options);
 
                         if (gearitem != null)
                         {
                             GearItem = gearitem;
-                            ImageBaseAddress = imageBaseAddress;
-                            imagesource = imageBaseAddress + $"imagedownload/" + GearItem.Image;
+                            imagesource = ImageBaseAddress + $"imagedownload/" + GearItem.Image;
                         }
                     }
                 }
@@ -108,17 +118,20 @@ namespace softasinsoftware.Web.Pages.Gear
         private List<UploadResult> uploadResults = new();
 
         string baseaddress = string.Empty;
-        public string imagesource = string.Empty;
+
 
         //Date Added: 20220727
-        //--------------------
-        //TODO: Fix second upload
+        //--------------------  
+        //TODO: Change from Multiple Upload to Single Upload
+        //TODO: On Edit show the full Image info panel
+        //TODO: On a second upload the first upload should be removed from disk
         //TODO: Fix Stream Layout bit better ... suggested by @skod
         //TODO: Add link to Azure Shield Cert
         //TODO: Add shields 👆 a component?
         //TODO: Make the Upload a separate Blazor Component
         //TODO: When deleting the Gear Item also delete the 'attached' image 
         //TODO: Update the Offline message on Twitch (very old picture/logo there)
+        //TODO: Remove Static Identity parts? https://github.com/dotnet/AspNetCore.Docs/pull/16560/commits/b6d3e7f90954fe7c89fd59e677181de71376ced7
 
         private async Task OnInputFileChange(InputFileChangeEventArgs e)
         {
@@ -132,7 +145,15 @@ namespace softasinsoftware.Web.Pages.Gear
 
             var client = ClientFactory.CreateClient("softasinsoftware.API");
 
-            baseaddress = client.BaseAddress.ToString();
+            if (client == null)
+            {
+                return;
+            }
+
+            if (client.BaseAddress != null)
+            {
+                baseaddress = client.BaseAddress.ToString();
+            }
 
             shouldRender = false;
 

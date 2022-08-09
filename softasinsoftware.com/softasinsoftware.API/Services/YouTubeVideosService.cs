@@ -15,14 +15,14 @@ namespace softasinsoftware.API.Services
         public IConfiguration Configuration { get; private set; }
         public IMemoryCache MemoryCache { get; private set; }
 
-        private int NumberOfShows{ get; set; }
+        private int NumberOfShows { get; set; }
         private string PlayList { get; set; } = string.Empty;
         private string ApiKey { get; set; } = string.Empty;
 
         public YouTubeVideosService(IConfiguration configuration, IMemoryCache cache)
         {
             this.Configuration = configuration;
-            this.MemoryCache = cache;   
+            this.MemoryCache = cache;
         }
 
         public async Task<YouTubeVideoList> GetYouTubePlayListVideosAsync(string playlistID, int numberOfShows, bool disablecache)
@@ -34,7 +34,7 @@ namespace softasinsoftware.API.Services
             if (string.IsNullOrEmpty(this.ApiKey) ||
                 string.IsNullOrEmpty(this.PlayList))
             {
-                // return mockdata ...
+                //TODO: return mockdata ...
             }
 
             if (true /* authenticated */ && disablecache)
@@ -70,9 +70,9 @@ namespace softasinsoftware.API.Services
             });
 
             if (string.IsNullOrEmpty(youtubeService.ApiKey))
-			{
+            {
                 //TODO: return mock jsonfile 
-			}
+            }
 
             var listRequest = youtubeService.PlaylistItems.List("snippet");
             listRequest.PlaylistId = playlist;
