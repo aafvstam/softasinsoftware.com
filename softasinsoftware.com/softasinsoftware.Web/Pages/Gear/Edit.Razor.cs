@@ -123,15 +123,22 @@ namespace softasinsoftware.Web.Pages.Gear
         //Date Added: 20220727
         //--------------------  
         //TODO: Change from Multiple Upload to Single Upload
-        //TODO: On Edit show the full Image info panel
+        //TODO: On Edit, show the full Image info panel
         //TODO: On a second upload the first upload should be removed from disk
-        //TODO: Fix Stream Layout bit better ... suggested by @skod
+        //TODO: When deleting the Gear Item also delete the 'attached' image 
+
+        //TODO: About Page
         //TODO: Add link to Azure Shield Cert
         //TODO: Add shields 👆 a component?
+
         //TODO: Make the Upload a separate Blazor Component
-        //TODO: When deleting the Gear Item also delete the 'attached' image 
-        //TODO: Update the Offline message on Twitch (very old picture/logo there)
         //TODO: Remove Static Identity parts? https://github.com/dotnet/AspNetCore.Docs/pull/16560/commits/b6d3e7f90954fe7c89fd59e677181de71376ced7
+
+        //TODO: On Twitch Website
+        //TODO: Update the Offline message on Twitch (very old picture/logo there)
+
+        //TODO: vMix Config
+        //TODO: Fix Stream Layout bit better ... suggested by @skod
 
         private async Task OnInputFileChange(InputFileChangeEventArgs e)
         {
