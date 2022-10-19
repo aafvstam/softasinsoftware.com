@@ -2,7 +2,7 @@
 
 using softasinsoftware.Shared.Models;
 
-namespace softasinsoftware.Web.Pages
+namespace softasinsoftware.Web.Components
 {
     public partial class YouTubeShow
     {
