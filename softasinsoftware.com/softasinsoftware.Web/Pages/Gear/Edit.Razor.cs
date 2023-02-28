@@ -97,7 +97,7 @@ namespace softasinsoftware.Web.Pages.Gear
 
             if (response.IsSuccessStatusCode)
             {
-                this.NavigationManager.NavigateTo("/gear/gear");
+                NavigationManager?.NavigateTo("/gear/gear");
             }
 
             Cancel();
@@ -105,7 +105,7 @@ namespace softasinsoftware.Web.Pages.Gear
 
         public void Cancel()
         {
-            this.NavigationManager.NavigateTo("/gear/gear");
+            NavigationManager?.NavigateTo("/gear/gear");
         }
 
         private bool shouldRender;
