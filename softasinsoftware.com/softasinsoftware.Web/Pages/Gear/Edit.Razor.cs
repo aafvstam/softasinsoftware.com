@@ -97,7 +97,7 @@ namespace softasinsoftware.Web.Pages.Gear
 
             if (response.IsSuccessStatusCode)
             {
-                this.NavigationManager.NavigateTo("/gear/gear");
+                NavigationManager?.NavigateTo("/gear/gear");
             }
 
             Cancel();
@@ -105,7 +105,7 @@ namespace softasinsoftware.Web.Pages.Gear
 
         public void Cancel()
         {
-            this.NavigationManager.NavigateTo("/gear/gear");
+            NavigationManager?.NavigateTo("/gear/gear");
         }
 
         private bool shouldRender;
@@ -128,8 +128,7 @@ namespace softasinsoftware.Web.Pages.Gear
         //TODO: When deleting the Gear Item also delete the 'attached' image 
 
         //TODO: About Page
-        //TODO: Add link to Azure Shield Cert
-        //TODO: Add shields 👆 a component?
+        //TODO: Add shields 👆 as a component?
 
         //TODO: Make the Upload a separate Blazor Component
         //TODO: Remove Static Identity parts? https://github.com/dotnet/AspNetCore.Docs/pull/16560/commits/b6d3e7f90954fe7c89fd59e677181de71376ced7

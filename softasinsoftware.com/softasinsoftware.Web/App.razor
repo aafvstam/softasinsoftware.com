@@ -6,22 +6,22 @@
             <AuthorizeRouteView RouteData="@routeData"
                                 DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
-					@{
-						 var returnUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-						<LoginRedirect ReturnUrl="@returnUrl" />
-					}
+                    @{
+                        var returnUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+                        <RedirectToLogin ReturnUrl="@returnUrl" />
+                    }
                 </NotAuthorized>
-				<Authorizing>
-					<h1>Authorization in progress</h1>
-					<p>Only visible while authorization is in progress.</p>
-				</Authorizing>
+                <Authorizing>
+                    <h1>Authorization in progress</h1>
+                    <p>Only visible while authorization is in progress.</p>
+                </Authorizing>
             </AuthorizeRouteView>
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
         </Found>
         <NotFound>
             <PageTitle>Not found</PageTitle>
             <LayoutView Layout="@typeof(MainLayout)">
-                <p  class="alert alert-danger" role="alert">Sorry, there's nothing at this address.</p>
+                <p class="alert alert-danger" role="alert">Sorry, there's nothing at this address.</p>
             </LayoutView>
         </NotFound>
     </Router>

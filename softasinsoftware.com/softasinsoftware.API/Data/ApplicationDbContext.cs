@@ -11,6 +11,6 @@ namespace softasinsoftware.API.Data
         {
         }
 
-        public DbSet<GearItem> GearList { get; set; }
+        public DbSet<GearItem>? GearList { get; set; }
     }
 }
