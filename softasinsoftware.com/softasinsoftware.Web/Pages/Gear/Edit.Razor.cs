@@ -128,7 +128,6 @@ namespace softasinsoftware.Web.Pages.Gear
         //TODO: When deleting the Gear Item also delete the 'attached' image 
 
         //TODO: About Page
-        //TODO: Add link to Azure Shield Cert
         //TODO: Add shields 👆 a component?
 
         //TODO: Make the Upload a separate Blazor Component
