@@ -41,8 +41,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          CONFIGURATION: Release
+          WORKING_DIRECTORY: ./softasinsoftware.com/softasinsoftware.Web
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"aafvstam_softasinsoftware.com" /o:"aafvstam" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet restore "${{ env.WORKING_DIRECTORY }}"
+          dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+          dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
           <insert_your_build_command>
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
