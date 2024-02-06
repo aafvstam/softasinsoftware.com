@@ -17,7 +17,7 @@ env:
   AZURE_WEBAPI_PACKAGE_PATH: softasinsoftware.API/publish
   AZURE_WEBAPI_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPI_PUBLISH_PROFILE }}
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 6.0.x
+  DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: ./softasinsoftware.com/softasinsoftware.API
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -25,9 +25,9 @@ jobs:
   build-and-deploy:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
       - name: Restore
@@ -37,7 +37,7 @@ jobs:
       - name: Test
         run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
       - name: Publish
-        run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --self-contained true --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPI_PACKAGE_PATH }}"
+        run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --runtime win-x64 --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPI_PACKAGE_PATH }}"
       - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
