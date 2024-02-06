@@ -17,7 +17,7 @@ env:
   AZURE_WEBAPI_PACKAGE_PATH: softasinsoftware.API/publish
   AZURE_WEBAPI_PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPI_PUBLISH_PROFILE }}
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 6.0.x
+  DOTNET_CORE_VERSION: 8.0.x
   WORKING_DIRECTORY: ./softasinsoftware.com/softasinsoftware.API
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
