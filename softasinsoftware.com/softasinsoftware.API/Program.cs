@@ -17,6 +17,7 @@ using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+int filesProcessed = 0;
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -273,7 +274,8 @@ app.MapPost("/filesave", async (HttpRequest request) =>
         bool uploaded = false;
 
         int errorCode = 0;
-        int filesProcessed = 0;
+        
+        filesProcessed = 0;
 
         string filenameTrustedForStorage = string.Empty;
         string filenameUntrusted = string.Empty;
