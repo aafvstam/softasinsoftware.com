@@ -12,7 +12,7 @@ env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     CONFIGURATION: Release
-    DOTNET_CORE_VERSION: 8.0.1
+    DOTNET_CORE_VERSION: 8.0.x
     WORKING_DIRECTORY_WEB: ./softasinsoftware.com/softasinsoftware.Web
     WORKING_DIRECTORY_API: ./softasinsoftware.com/softasinsoftware.API
 jobs:
