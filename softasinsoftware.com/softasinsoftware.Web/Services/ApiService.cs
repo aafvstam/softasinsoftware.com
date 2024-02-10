@@ -19,6 +19,9 @@
                 baseUrl = configuration["ApiBaseUrl:Development"];
             }
 
+            // looks like it is not properly reading the configuration in production
+            baseUrl = "https://softasinsoftwareapi.azurewebsites.net/";
+
             if (string.IsNullOrEmpty(baseUrl) == false)
             {
                 Uri uri = new Uri(baseUrl);
