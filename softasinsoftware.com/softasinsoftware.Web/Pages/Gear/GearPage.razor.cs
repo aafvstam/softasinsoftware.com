@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
+using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 
 using System.Text.Json;
@@ -12,17 +13,19 @@ namespace softasinsoftware.Web.Pages.Gear
         public string? ImageBaseAddress = string.Empty;
 
         [Inject]
-        public IHttpClientFactory? ClientFactory { get; private set; }
+        public ApiService? ApiService { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            if (ClientFactory == null)
-            {
-                return;
-            }
+            if (ApiService == null) return;
 
-            var client = ClientFactory.CreateClient("softasinsoftware.API");
-            this.ImageBaseAddress = client.BaseAddress.ToString();
+            var client = ApiService.HttpClient;
+
+            if (client == null) return;
+            if (client.BaseAddress != null)
+            {
+                ImageBaseAddress = client.BaseAddress.ToString();
+            }
 
             HttpResponseMessage response = await client.GetAsync("gearlist");
 

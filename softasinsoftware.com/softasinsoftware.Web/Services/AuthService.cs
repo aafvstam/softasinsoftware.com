@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore.Components.Authorization;
 
+using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 using softasinsoftware.Web.Classes;
 
@@ -18,11 +19,11 @@ namespace softasinsoftware.Web.Services
         private readonly AuthenticationStateProvider _authenticationStateProvider;
         private readonly ILocalStorageService _localStorage;
 
-        public AuthService(IHttpClientFactory httpClientFactory,
+        public AuthService(ApiService apiService,
                            AuthenticationStateProvider authenticationStateProvider,
                            ILocalStorageService localStorage)
         {
-            _httpClient = httpClientFactory.CreateClient("softasinsoftware.API");
+            _httpClient = apiService.HttpClient;
             _authenticationStateProvider = authenticationStateProvider;
             _localStorage = localStorage;
         }

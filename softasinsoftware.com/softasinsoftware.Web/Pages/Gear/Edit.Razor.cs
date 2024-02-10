@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
+using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 
 using System.Net.Http.Headers;
@@ -22,7 +23,7 @@ namespace softasinsoftware.Web.Pages.Gear
         public string? ImageBaseAddress { get; set; } = string.Empty;
 
         [Inject]
-        public IHttpClientFactory? ClientFactory { get; private set; }
+        public ApiService? ApiService { get; set; }
 
         [Inject]
         public NavigationManager? NavigationManager { get; private set; }
@@ -33,18 +34,11 @@ namespace softasinsoftware.Web.Pages.Gear
             {
                 Title = "Edit";
 
-                if (ClientFactory == null)
-                {
-                    return;
-                }
+                if (ApiService == null) return;
 
-                var client = ClientFactory.CreateClient("softasinsoftware.API");
+                var client = ApiService.HttpClient;
 
-                if (client == null)
-                {
-                    return;
-                }
-
+                if (client == null) return;
                 if (client.BaseAddress != null)
                 {
                     ImageBaseAddress = client.BaseAddress.ToString();
@@ -77,12 +71,9 @@ namespace softasinsoftware.Web.Pages.Gear
 
         protected async Task SaveGearItem()
         {
-            if (ClientFactory == null)
-            {
-                return;
-            }
+            if (ApiService == null) return;
 
-            var client = ClientFactory.CreateClient("softasinsoftware.API");
+            var client = ApiService.HttpClient;
 
             HttpResponseMessage response = new();
 
@@ -144,12 +135,9 @@ namespace softasinsoftware.Web.Pages.Gear
             isLoading = true;
             loadedFiles.Clear();
 
-            if (ClientFactory == null)
-            {
-                return;
-            }
+            if (ApiService == null) return;
 
-            var client = ClientFactory.CreateClient("softasinsoftware.API");
+            var client = ApiService.HttpClient;
 
             if (client == null)
             {

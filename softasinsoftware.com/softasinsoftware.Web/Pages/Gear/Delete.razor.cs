@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
+using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 
 using System.Text.Json;
@@ -14,19 +15,16 @@ namespace softasinsoftware.Web.Pages.Gear
         public GearItem GearItem { get; set; } = new();
 
         [Inject]
-        public IHttpClientFactory? ClientFactory { get; private set; }
+        public ApiService? ApiService { get; set; }
 
         [Inject]
         public NavigationManager? NavigationManager { get; private set; }
 
         protected override async Task OnInitializedAsync()
         {
-            if (ClientFactory == null)
-            {
-                return;
-            }
+            if (ApiService == null) return;
 
-            var client = ClientFactory.CreateClient("softasinsoftware.API");
+            var client = ApiService.HttpClient;
 
             HttpResponseMessage response = await client.GetAsync("gear/" + Convert.ToInt32(GearId));
 
@@ -53,12 +51,9 @@ namespace softasinsoftware.Web.Pages.Gear
 
         protected async Task RemoveGearItem(int GearId)
         {
-            if (ClientFactory == null)
-            {
-                return;
-            }
+            if (ApiService == null) return;
 
-            var client = ClientFactory.CreateClient("softasinsoftware.API");
+            var client = ApiService.HttpClient;
 
             HttpResponseMessage response = await client.DeleteAsync("gear/" + Convert.ToInt32(GearId));
 

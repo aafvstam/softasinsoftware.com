@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 
+using softasinsoftware.API.Services;
+
 using System.Text.Json;
 
 namespace softasinsoftware.Web.Shared
@@ -7,7 +9,7 @@ namespace softasinsoftware.Web.Shared
     public partial class LoginDisplay
     {
         [Inject]
-        public IHttpClientFactory? ClientFactory { get; private set; }
+        public ApiService? ApiService { get; set; }
 
         public int UserCount { get; private set; } = -1;
 
@@ -18,9 +20,9 @@ namespace softasinsoftware.Web.Shared
 
         private async Task GetUserCount()
         {
-            if (ClientFactory == null) return;
+            if (ApiService == null) return;
 
-            var client = ClientFactory.CreateClient("softasinsoftware.API");
+            var client = ApiService.HttpClient;
 
             HttpResponseMessage response = await client.GetAsync("usercount");
 
