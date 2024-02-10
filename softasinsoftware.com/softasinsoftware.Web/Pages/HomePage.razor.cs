@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+
+using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 using System.Text.Json;
 
@@ -9,7 +11,7 @@ namespace softasinsoftware.Web.Pages
 
     {
         [Inject]
-        public IHttpClientFactory? ClientFactory { get; private set; }
+        public ApiService? ApiService { get; set; }
 
         public YouTubeVideoList Videos { get; private set; } = new YouTubeVideoList();
 
@@ -17,12 +19,9 @@ namespace softasinsoftware.Web.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            if (ClientFactory == null)
-            {
-                return;
-            }
+            if (ApiService == null) return;
 
-            var client = ClientFactory.CreateClient("softasinsoftware.API");
+            var client = ApiService.HttpClient;
 
             HttpResponseMessage response = await client.GetAsync("youtubeplaylistvideos");
 

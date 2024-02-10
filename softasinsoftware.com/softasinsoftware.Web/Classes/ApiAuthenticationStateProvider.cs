@@ -2,6 +2,8 @@
 
 using Microsoft.AspNetCore.Components.Authorization;
 
+using softasinsoftware.API.Services;
+
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Json;
@@ -13,10 +15,10 @@ namespace softasinsoftware.Web.Classes
         private readonly HttpClient _httpClient;
         private readonly ILocalStorageService _localStorage;
 
-        public ApiAuthenticationStateProvider(IHttpClientFactory httpClientFactory,
+        public ApiAuthenticationStateProvider(ApiService apiService,
                                               ILocalStorageService localStorage)
         {
-            _httpClient = httpClientFactory.CreateClient("softasinsoftware.API");
+            _httpClient = apiService.HttpClient;
             _localStorage = localStorage;
         }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
+using softasinsoftware.API.Services;
 using softasinsoftware.Shared.Models;
 
 using System.Net.Http.Headers;
@@ -24,19 +25,16 @@ namespace softasinsoftware.Web.Pages
         protected override bool ShouldRender() => shouldRender;
 
         [Inject]
-        public IHttpClientFactory? ClientFactory { get; private set; }
+        public ApiService? ApiService { get; set; }
 
         private async Task OnInputFileChange(InputFileChangeEventArgs e)
         {
             isLoading = true;
             loadedFiles.Clear();
 
-            if (ClientFactory == null)
-            {
-                return;
-            }
+            if (ApiService == null) return;
 
-            var client = ClientFactory.CreateClient("softasinsoftware.API");
+            var client = ApiService.HttpClient;
 
             baseaddress = client.BaseAddress.ToString();
 

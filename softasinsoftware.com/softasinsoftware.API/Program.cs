@@ -274,7 +274,6 @@ app.MapPost("/filesave", async (HttpRequest request) =>
         bool uploaded = false;
 
         int errorCode = 0;
-        
         filesProcessed = 0;
 
         string filenameTrustedForStorage = string.Empty;

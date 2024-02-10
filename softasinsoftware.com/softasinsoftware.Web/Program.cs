@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
+using softasinsoftware.API.Services;
 using softasinsoftware.Web;
 using softasinsoftware.Web.Classes;
 using softasinsoftware.Web.Services;
@@ -14,15 +15,9 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-//TODO: Take out hardcoded API URI
-if (builder.HostEnvironment.IsDevelopment())
-{
-    builder.Services.AddHttpClient("softasinsoftware.API", client => client.BaseAddress = new Uri("https://localhost:7067/"));
-}
-else
-{
-    builder.Services.AddHttpClient("softasinsoftware.API", client => client.BaseAddress = new Uri("https://softasinsoftwareapi.azurewebsites.net/"));
-}
+// API Service
+builder.Services.AddHttpClient("softasinsoftware.API");
+builder.Services.AddTransient<ApiService>();
 
 builder.Services.AddMsalAuthentication(options =>
 {
