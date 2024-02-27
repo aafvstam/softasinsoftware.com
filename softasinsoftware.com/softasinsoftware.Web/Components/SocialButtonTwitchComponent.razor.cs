@@ -4,7 +4,7 @@
     {
         public SocialButtonTwitchComponent()
         {
-            Icon = "fab fa-twitch";
+            Icon = "fa-brands fa-twitch";
         }
 
         protected override void OnInitialized()

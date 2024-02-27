@@ -4,7 +4,7 @@
     {
         public SocialButtonTwitterComponent()
         {
-            Icon = "fab fa-twitter";
+            Icon = "fa-brands fa-x-twitter";
         }
 
         protected override void OnInitialized()

@@ -4,7 +4,7 @@
     {
         public SocialButtonYouTubeComponent()
         {
-            Icon = "fab fa-youtube";
+            Icon = "fa-brands fa-youtube";
         }
 
         protected override void OnInitialized()
