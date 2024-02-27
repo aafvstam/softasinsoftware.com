@@ -9,14 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
-      <PackageReference Include="Google.Apis.YouTube.v3" Version="1.66.0.3309" />
-      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" />
-      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all" />
-      <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.1" />
+      <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+      <PackageReference Include="Google.Apis.YouTube.v3" Version="1.67.0.3330" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.2" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.2" PrivateAssets="all" />
+      <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" Version="8.0.2" />
       <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-      <PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="8.0.1" />
+      <PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
